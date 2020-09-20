@@ -1,6 +1,8 @@
 import React from "react";
 import {
+  Box,
   Button,
+  Grid,
   Text,
   Stack,
   DesignSystemProvider,
@@ -12,7 +14,7 @@ const App: React.FC = () => {
       <Stack
         space="32px"
         direction="vertical"
-        bg="background"
+        bg="surface"
         position="absolute"
         top="0"
         bottom="0"
@@ -34,6 +36,20 @@ const App: React.FC = () => {
           Click me!
         </Button>
       </Stack>
+      <Grid
+        gridTemplateColumns={{
+          mobile: "1fr",
+          tablet: "1fr 1fr",
+          desktop: "1fr 1fr 1fr",
+        }}
+      >
+        <Box>Oh</Box>
+        <Box>Oh</Box>
+        <Box>Oh</Box>
+        <Box>Oh</Box>
+        <Box>Oh</Box>
+        <Box>Oh</Box>
+      </Grid>
     </DesignSystemProvider>
   );
 };
