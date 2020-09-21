@@ -1,0 +1,79 @@
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useGetData } from "../dataHook";
+import { Link } from "react-router-dom";
+import { Box, Spacer, Text } from "../packages/design-system";
+
+import arrow from "./media/arrow-white.svg";
+import * as S from "./ResultStyles";
+import { formatDate, usePollingLocations, useStateInfo } from "./ResultUtils";
+import Table from "../Table/Table";
+
+const Result: React.FC = () => {
+  const { address } = useParams();
+  const { data } = useGetData(address);
+
+  // TABLE DATA
+  const { columnsPollingLocations, rowsPollingLocations } = usePollingLocations(
+    data
+  );
+  const { columnsStateInfo, rowsStateInfo } = useStateInfo(data);
+  if (data == null) {
+    return <p>...Loading</p>;
+  }
+
+  // ELECTION DATA
+  const { line1, city, state, zip } = data.normalizedInput;
+  const { electionDay, name } = data.election;
+  const line1Formatted = line1 !== "" ? `${line1}, ` : "";
+
+  const location = (
+    <S.ContainerLocation>
+      <Text as="h1" typography="heading5">
+        <strong>{name}</strong> Voting Information for
+      </Text>
+      <Spacer height="32px"></Spacer>
+      <Text
+        as="h1"
+        backgroundColor="primary"
+        color="onPrimary"
+        display="inline"
+        typography="headingBold0"
+      >
+        {`${line1Formatted} ${city}, ${state} ${zip}`}
+      </Text>
+      <Text as="p" typography="paragraph0">
+        <strong>Election Day:</strong> {formatDate(electionDay)}
+      </Text>
+    </S.ContainerLocation>
+  );
+  return (
+    <div>
+      <Link to="/">
+        <S.BackLink>
+          <img src={arrow} />
+          <Text as="p" typography="paragraph0">
+            Back to Address Form
+          </Text>
+        </S.BackLink>
+      </Link>
+      {location}
+      {data.state && (
+        <Table
+          columns={columnsStateInfo}
+          rows={rowsStateInfo}
+          title={`Official ${data.state[0].name} State Voting Information`}
+        />
+      )}
+      {data.pollingLocations && (
+        <Table
+          columns={columnsPollingLocations}
+          rows={rowsPollingLocations}
+          title="Your Polling Locations"
+        />
+      )}
+    </div>
+  );
+};
+
+export default Result;

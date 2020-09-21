@@ -3,8 +3,8 @@ import { width, WidthProps } from "styled-system";
 import { css, styled, Theme } from "./theme";
 
 export type ButtonStyleProps = {
-  size: "medium";
-  variant: "primary";
+  size: "medium" | "mediumSquare";
+  variant: "primary" | "primarySquare";
   theme: Theme;
 } & WidthProps<Theme, number | string>;
 
@@ -13,6 +13,11 @@ const sizeStyles = ({ size }: ButtonStyleProps) => {
     case "medium":
       return css`
         height: 48px;
+      `;
+    case "mediumSquare":
+      return css`
+        height: 62px;
+        width: 62px;
       `;
     default:
       return "";
@@ -26,13 +31,18 @@ const variantStyles = ({ variant }: ButtonStyleProps) => {
         background: ${(p) => p.theme.colors.primary};
         color: ${(p) => p.theme.colors.onPrimary};
       `;
+    case "primarySquare":
+      return css`
+        background: ${(p) => p.theme.colors.primary};
+        color: ${(p) => p.theme.colors.onPrimary};
+      `;
     default:
       return "";
   }
 };
 
 const ButtonStyles = styled("button")<ButtonStyleProps>`
-  min-width: 108px;
+  border: none;
   cursor: pointer;
   ${width}
   ${sizeStyles}
