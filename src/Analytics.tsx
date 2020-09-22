@@ -7,12 +7,13 @@ type TAnalyticsContext = {
 } | null;
 export const AnalyticsContext = React.createContext<TAnalyticsContext>(null);
 
-const TRACKING_CODE = "UA-000000-01";
+const TRACKING_ID = "UA-178617624-1";
+
 export const AnalyticsProvider: React.FC = ({ children }) => {
   const [analytics, setAnalytics] = React.useState<typeof ReactGA | null>(null);
 
   const initialize = React.useCallback(() => {
-    ReactGA.initialize(TRACKING_CODE);
+    ReactGA.initialize(TRACKING_ID);
     setAnalytics(ReactGA);
   }, []);
 
