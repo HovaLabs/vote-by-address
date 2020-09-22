@@ -8,10 +8,13 @@ import {
   Stack,
   DesignSystemProvider,
 } from "./design-system";
+import { AnalyticsProvider, useAnalytics } from "./Analytics";
 
 const App: React.FC = () => {
+  const { analytics, initialize } = useAnalytics();
+
   return (
-    <DesignSystemProvider>
+    <>
       <Stack
         space="32px"
         direction="vertical"
@@ -32,7 +35,10 @@ const App: React.FC = () => {
           size="medium"
           variant="primary"
           width={{ mobile: 120, tablet: 160, desktop: 200 }}
-          onClick={() => alert("dang")}
+          onClick={() => {
+            analytics?.pageview("foo bar");
+            alert("dang");
+          }}
         >
           Click me!
         </Button>
@@ -53,12 +59,20 @@ const App: React.FC = () => {
       </Grid>
       <CookieWarning
         cookieKey="hova-labs-analytics-consent"
-        handleBannerAcknowledged={() => alert("aw dang")}
+        handleBannerAcknowledged={initialize}
       >
         <Box>We're watching you!</Box>
       </CookieWarning>
-    </DesignSystemProvider>
+    </>
   );
 };
 
-export default App;
+const AppWithContexts: React.FC = () => (
+  <DesignSystemProvider>
+    <AnalyticsProvider>
+      <App />
+    </AnalyticsProvider>
+  </DesignSystemProvider>
+);
+
+export default AppWithContexts;
