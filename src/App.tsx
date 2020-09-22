@@ -10,17 +10,11 @@ import {
 } from "./design-system";
 import { AnalyticsProvider, useAnalytics } from "./Analytics";
 
-const Contexts: React.FC = ({ children }) => (
-  <DesignSystemProvider>
-    <AnalyticsProvider>{children}</AnalyticsProvider>
-  </DesignSystemProvider>
-);
-
 const App: React.FC = () => {
-  const { initialize } = useAnalytics();
+  const { analytics, initialize } = useAnalytics();
 
   return (
-    <Contexts>
+    <>
       <Stack
         space="32px"
         direction="vertical"
@@ -41,7 +35,10 @@ const App: React.FC = () => {
           size="medium"
           variant="primary"
           width={{ mobile: 120, tablet: 160, desktop: 200 }}
-          onClick={() => alert("dang")}
+          onClick={() => {
+            analytics?.pageview("foo bar");
+            alert("dang");
+          }}
         >
           Click me!
         </Button>
@@ -66,8 +63,16 @@ const App: React.FC = () => {
       >
         <Box>We're watching you!</Box>
       </CookieWarning>
-    </Contexts>
+    </>
   );
 };
 
-export default App;
+const AppWithContexts: React.FC = () => (
+  <DesignSystemProvider>
+    <AnalyticsProvider>
+      <App />
+    </AnalyticsProvider>
+  </DesignSystemProvider>
+);
+
+export default AppWithContexts;

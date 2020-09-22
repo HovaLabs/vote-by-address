@@ -4,8 +4,12 @@ import ReactGA from "react-ga";
 type TAnalyticsContext = {
   analytics: typeof ReactGA | null;
   initialize: () => void;
-} | null;
-export const AnalyticsContext = React.createContext<TAnalyticsContext>(null);
+};
+
+export const AnalyticsContext = React.createContext<TAnalyticsContext>({
+  analytics: null,
+  initialize: () => null,
+});
 
 const TRACKING_ID = "UA-178617624-1";
 
