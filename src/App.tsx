@@ -2,6 +2,7 @@ import React from "react";
 import {
   Box,
   Button,
+  CookieWarning,
   Grid,
   Text,
   Stack,
@@ -50,6 +51,12 @@ const App: React.FC = () => {
         <Box>Oh</Box>
         <Box>Oh</Box>
       </Grid>
+      <CookieWarning
+        cookieKey="hova-labs-analytics-consent"
+        handleBannerAcknowledged={() => alert("aw dang")}
+      >
+        <Box>We're watching you!</Box>
+      </CookieWarning>
     </DesignSystemProvider>
   );
 };
