@@ -1,5 +1,6 @@
 export { Box } from "./Box";
 export { Button } from "./Button";
+export { ClickOutside } from "./ClickOutside";
 export { DesignSystemProvider } from "./DesignSystemProvider";
 export { Grid } from "./Grid";
 export { Spacer } from "./Spacer";
