@@ -6,7 +6,7 @@ import {
   Text,
   Stack,
   DesignSystemProvider,
-} from "./packages/design-system";
+} from "./design-system";
 
 const App: React.FC = () => {
   return (
