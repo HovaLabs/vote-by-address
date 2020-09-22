@@ -2,16 +2,16 @@ import React from "react";
 import {
   Box,
   Button,
-  CookieWarning,
   Grid,
   Text,
   Stack,
   DesignSystemProvider,
 } from "./design-system";
-import { AnalyticsProvider, useAnalytics } from "./Analytics";
+import { useAnalytics, AnalyticsProvider } from "./Analytics";
+import { AnalyticsConsent } from "./AnalyticsConsent";
 
 const App: React.FC = () => {
-  const { analytics, initialize } = useAnalytics();
+  const { analytics } = useAnalytics();
 
   return (
     <>
@@ -57,12 +57,7 @@ const App: React.FC = () => {
         <Box>Oh</Box>
         <Box>Oh</Box>
       </Grid>
-      <CookieWarning
-        cookieKey="hova-labs-analytics-consent"
-        handleBannerAcknowledged={initialize}
-      >
-        <Box>We're watching you!</Box>
-      </CookieWarning>
+      <AnalyticsConsent />
     </>
   );
 };
