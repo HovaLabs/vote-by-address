@@ -10,8 +10,8 @@ import { formatDate, usePollingLocations, useStateInfo } from "./ResultUtils";
 import Table from "../Table/Table";
 
 const Result: React.FC = () => {
-  const { address } = useParams();
-  const { data } = useGetData(address);
+  const { address } = useParams<{ address?: string }>();
+  const { data } = useGetData(address || "");
 
   // TABLE DATA
   const { columnsPollingLocations, rowsPollingLocations } = usePollingLocations(

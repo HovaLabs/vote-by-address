@@ -87,7 +87,7 @@ export const useStateInfo = (data: any | null): HookOutputStateInfo => {
       ballotInfoUrl,
       electionInfoUrl,
       votingLocationFinderUrl,
-      Object.values(correspondenceAddress).join(" "),
+      Object.values(correspondenceAddress || []).join(" "),
       sources,
     ];
   });
