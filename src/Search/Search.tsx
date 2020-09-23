@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import arrow from "./media/arrow.svg";
-import { Button, Text } from "../packages/design-system";
+import { Button, Text } from "../design-system";
 import * as S from "./SearchStyles";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";

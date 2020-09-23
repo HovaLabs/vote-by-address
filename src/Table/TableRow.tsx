@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./TableStyles";
-import { Box, Text } from "../packages/design-system";
+import { Box, Text } from "../design-system";
 import { Link } from "react-router-dom";
 
 import { ColumnsType, RowType } from "./TableTypes";

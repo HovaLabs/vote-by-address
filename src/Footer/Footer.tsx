@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./FooterStyles";
 import google from "./media/google.svg";
-import { Text } from "../packages/design-system";
+import { Text } from "../design-system";
 import logo from "./media/logo.svg";
 
 const Footer: React.FC = () => {

@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useGetData } from "../dataHook";
 import { Link } from "react-router-dom";
-import { Box, Spacer, Text } from "../packages/design-system";
+import { Spacer, Text } from "../design-system";
 
 import arrow from "./media/arrow-white.svg";
 import * as S from "./ResultStyles";

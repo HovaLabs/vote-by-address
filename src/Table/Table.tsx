@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./TableStyles";
-import { Text, Grid } from "../packages/design-system";
+import { Text, Grid } from "../design-system";
 import TableRow from "./TableRow";
 import { TableType } from "./TableTypes";
 
