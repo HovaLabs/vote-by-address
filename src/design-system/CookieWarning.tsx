@@ -27,12 +27,19 @@ export const CookieWarning: React.FC<{
 
   return (
     <Portal>
-      <Box position="fixed" bottom="0" left="0" right="0" bg="background">
+      <Box
+        position="fixed"
+        display="flex"
+        bottom="0"
+        left="0"
+        right="0"
+        bg="surface"
+        padding="16px"
+      >
         {children}
         <Box
-          position="absolute"
-          top="0"
-          right="0"
+          flex="0 0 20px"
+          alignSelf="flex-start"
           onClick={() => setBannerAcknowledged(true)}
         >
           X
