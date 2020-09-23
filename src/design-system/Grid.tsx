@@ -4,7 +4,8 @@ import { Box, BoxProps } from "./Box";
 
 export type GridProps = BoxProps & GridPropsSS<Theme>;
 
+// Don't declare 'display: grid;' if display is in props
 export const Grid = styled(Box)<GridProps>`
-  display: grid;
+  ${(p) => (p.display ? "" : "display: grid;")}
   ${grid}
 `;

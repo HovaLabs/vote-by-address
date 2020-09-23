@@ -1,11 +1,36 @@
-import { ResponsiveValue } from "styled-system";
+import { ResponsiveValue, system, TypographyProps } from "styled-system";
+import { BoxProps, Box } from "./Box";
 import { BreakpointObject, css, styled, Theme } from "./theme";
 
-export const Text = styled("div")<{
-  typography: ResponsiveValue<keyof Theme["typography"]>;
-}>((p) => {
+const customTypographyStyles = system({
+  wordBreak: true,
+});
+
+type WordBreakOptions =
+  | "normal"
+  | "break-all"
+  | "break-word"
+  | "keep-all"
+  | "inherit"
+  | "initial"
+  | "unset";
+
+type WordBreakProps = {
+  wordBreak?: ResponsiveValue<WordBreakOptions>;
+};
+
+export const Text = styled(Box)<
+  {
+    typography: ResponsiveValue<keyof Theme["typography"]>;
+  } & TypographyProps &
+    WordBreakProps &
+    BoxProps
+>((p) => {
   if (typeof p.typography === "string") {
-    return p.theme.typography[p.typography];
+    return css`
+      ${p.theme.typography[p.typography]}
+      ${customTypographyStyles}
+    `;
   }
   return Object.keys(p.theme.breakpoints).map((breakpointKey) => {
     // eslint-disable-next-line
@@ -21,6 +46,7 @@ export const Text = styled("div")<{
           breakpointKey as keyof BreakpointObject
         ]}) {
         ${typography}
+        ${customTypographyStyles}
       }
     `;
   });
