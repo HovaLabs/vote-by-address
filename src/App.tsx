@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Search from "./Search/Search";
 import Result from "./Result/Result";
 import * as S from "./AppStyles";
-import { DesignSystemProvider } from "./packages/design-system";
+import { DesignSystemProvider } from "./design-system";
 
 const App: React.FC = () => {
   return (
