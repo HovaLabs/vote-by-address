@@ -13,6 +13,9 @@ const Result: React.FC = () => {
   const { address } = useParams<{ address?: string }>();
   const { data } = useGetData(address || "");
 
+  // @ts-ignore
+  console.log(data?.pollingLocations);
+
   // TABLE DATA
   const { columnsPollingLocations, rowsPollingLocations } = usePollingLocations(
     data
@@ -65,13 +68,13 @@ const Result: React.FC = () => {
           title={`Official ${data.state[0].name} State Voting Information`}
         />
       )}
-      {data.pollingLocations && (
+      {/* {data.pollingLocations && (
         <Table
           columns={columnsPollingLocations}
           rows={rowsPollingLocations}
           title="Your Polling Locations"
         />
-      )}
+      )} */}
     </div>
   );
 };
