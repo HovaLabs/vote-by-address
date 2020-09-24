@@ -6,7 +6,7 @@ import { Portal } from "./Portal";
 
 export const CookieWarning: React.FC<{
   cookieKey: string;
-  handleBannerAcknowledged: () => void;
+  handleBannerAcknowledged?: () => void;
 }> = ({ children, cookieKey, handleBannerAcknowledged }) => {
   const [bannerAcknowledged, setBannerAcknowledged] = useLocalStorage<boolean>(
     cookieKey,
@@ -16,7 +16,7 @@ export const CookieWarning: React.FC<{
 
   React.useEffect(() => {
     if (bannerAcknowledged && !handlerCalled) {
-      handleBannerAcknowledged();
+      handleBannerAcknowledged?.();
       setHandlerCalled(true);
     }
   }, [bannerAcknowledged, handleBannerAcknowledged, handlerCalled]);
