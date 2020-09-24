@@ -1,14 +1,9 @@
 import React from "react";
 import { CookieWarning, Text } from "./design-system";
-import { useAnalytics } from "./Analytics";
 
 export const AnalyticsConsent: React.FC = () => {
-  const { initialize } = useAnalytics();
   return (
-    <CookieWarning
-      cookieKey="hova-labs-analytics-consent"
-      handleBannerAcknowledged={initialize}
-    >
+    <CookieWarning cookieKey="hova-labs-analytics-consent">
       <Text typography="paragraph0">
         This website uses cookies for analytics and to improve user experience.
         By continuing to navigate our website without changing your cookie

@@ -1,28 +1,18 @@
 import React from "react";
 import ReactGA from "react-ga";
 
-type TAnalyticsContext = {
-  analytics: typeof ReactGA | null;
-  initialize: () => void;
-};
-
-export const AnalyticsContext = React.createContext<TAnalyticsContext>({
-  analytics: null,
-  initialize: () => null,
-});
+type TAnalyticsContext = typeof ReactGA;
 
 const TRACKING_ID = "UA-178617624-1";
+ReactGA.initialize(TRACKING_ID);
+
+export const AnalyticsContext = React.createContext<TAnalyticsContext>(ReactGA);
 
 export const AnalyticsProvider: React.FC = ({ children }) => {
-  const [analytics, setAnalytics] = React.useState<typeof ReactGA | null>(null);
-
-  const initialize = React.useCallback(() => {
-    ReactGA.initialize(TRACKING_ID);
-    setAnalytics(ReactGA);
-  }, []);
+  const [analytics] = React.useState<typeof ReactGA>(ReactGA);
 
   return (
-    <AnalyticsContext.Provider value={{ analytics, initialize }}>
+    <AnalyticsContext.Provider value={analytics}>
       {children}
     </AnalyticsContext.Provider>
   );
