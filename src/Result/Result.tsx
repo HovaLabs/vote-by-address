@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useGetData } from "../dataHook";
+import { useGetData } from "./useResults";
 import { Link } from "react-router-dom";
 import { Spacer, Text } from "../design-system";
 
@@ -11,14 +11,17 @@ import Table from "../Table/Table";
 
 const Result: React.FC = () => {
   const { address } = useParams<{ address?: string }>();
-  const { data } = useGetData(address || "");
+  const {
+    data,
+    loading,
+    error,
+    columnsPollingLocations,
+    rowsPollingLocations,
+    columnsStateInfo,
+    rowsStateInfo,
+  } = useGetData(address || "");
 
-  // TABLE DATA
-  const { columnsPollingLocations, rowsPollingLocations } = usePollingLocations(
-    data
-  );
-  const { columnsStateInfo, rowsStateInfo } = useStateInfo(data);
-  if (data == null) {
+  if (loading || data == null) {
     return <p>...Loading</p>;
   }
 
