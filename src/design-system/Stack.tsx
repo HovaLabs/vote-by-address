@@ -15,8 +15,8 @@ export const Stack: React.FC<
     direction: "vertical" | "horizontal";
     space: ResponsiveValue<string | number, Theme>;
   } & BoxProps
-> = ({ children, direction, space }) => (
-  <Container direction={direction}>
+> = ({ children, direction, space, color, ...rest }) => (
+  <Container direction={direction} {...rest}>
     {React.Children.map(children, (child, index) => (
       <>
         {index === 0 ? null : (

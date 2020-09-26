@@ -22,8 +22,14 @@ export const Footer: React.FC = () => {
           </Text>
         </S.Logo>
       </Stack>
-      <Stack direction="vertical" space="16px" marginLeft="auto">
+      <Stack direction="vertical" space="16px">
         <Spacer height="16px" />
+        <Box>
+          <a href="/privacy-policy">Privacy Policy</a>
+        </Box>
+        <Box>
+          <a href="/terms-of-use">Terms of use</a>
+        </Box>
         <Box>
           <a
             href="https://forms.gle/nDFm7oMuTZhJGPe66"
