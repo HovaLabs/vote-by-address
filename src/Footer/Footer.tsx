@@ -8,11 +8,12 @@ export const Footer: React.FC = () => {
     <Box
       display="flex"
       width="100%"
-      marginTop="auto"
-      padding="64px"
+      flex="none"
+      padding={{ mobile: "32px", tablet: "64px" }}
       justifyContent="space-between"
       alignItems="flex-end"
       flexWrap="wrap"
+      marginTop="auto"
     >
       <Stack direction="vertical" space="32px">
         <S.Logo href="https://www.hovalabs.com/" target="_blank">

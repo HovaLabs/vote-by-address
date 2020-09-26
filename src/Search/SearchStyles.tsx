@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { Box, BoxProps, styled } from "../design-system";
 
 export const ContainerInput = styled.div`
   align-items: center;
@@ -45,9 +45,4 @@ export const Google = styled.div`
   }
 `;
 
-export const Form = styled("form")`
-  position: absolute;
-  margin: 0 64px 64px 64px;
-  left: 0;
-  bottom: 50%;
-`;
+export const Form = styled(Box).attrs({ as: "form" })<BoxProps>``;

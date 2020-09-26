@@ -18,13 +18,22 @@ const Search: React.FC = () => {
   return (
     <S.ContainerOuter>
       <S.Form
+        flex="1"
+        width="100%"
+        height="100%"
+        position={{ mobile: "relative", tablet: "absolute" }}
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="stretch"
+        padding={{ mobile: "32px", tablet: "64px" }}
         onSubmit={(e) => {
           // Add onSubmit handler so users can hit enter to submit form
           e.preventDefault();
           history.push(`/result/${address}`);
         }}
       >
-        <Text as="h1" typography="heading0">
+        <Text as="h1" typography={{ mobile: "heading4", tablet: "heading0" }}>
           <strong>Enter your address</strong> to get local election info:
         </Text>
 
