@@ -1,10 +1,9 @@
 import React from "react";
 import * as S from "./TableStyles";
 import { Box, Text } from "../design-system";
-import { Link } from "react-router-dom";
 
 import { ColumnsType, RowType } from "./TableTypes";
-import { isValidURL } from "./TableUtils";
+import { getIsLink } from "./TableUtils";
 
 const TableRow: React.FC<{ row: RowType; columns: ColumnsType }> = ({
   row,
@@ -33,16 +32,21 @@ const TableRow: React.FC<{ row: RowType; columns: ColumnsType }> = ({
         </Box>
       );
     } else {
-      return isValidURL(item) ? (
-        <Box backgroundColor="surface" padding="20px">
-          {title}
-          <Link to={item}>
-            <Text as="p" typography="paragraph0" wordBreak="break-word">
-              {item}
-            </Text>
-          </Link>
-        </Box>
-      ) : (
+      const isLink = getIsLink(item);
+      if (isLink) {
+        return (
+          <Box backgroundColor="surface" padding="20px">
+            {title}
+            <a href={item} target="_blank" rel="noopener noreferrer">
+              <Text as="p" typography="paragraph0" wordBreak="break-word">
+                {item}
+              </Text>
+            </a>
+          </Box>
+        );
+      }
+
+      return (
         <Box backgroundColor="surface" padding="20px">
           {title}
           <Text as="p" typography="paragraph0" wordBreak="break-word">
