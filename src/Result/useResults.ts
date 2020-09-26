@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router";
 
 type Address = {
   city: string;
@@ -105,6 +106,7 @@ export const useGetData = (
     loading: boolean;
     error: string | void;
   } => {
+  const history = useHistory();
   const [data, setData] = React.useState<RequestData>(null);
   const [error, setError] = React.useState<string | void>(undefined);
   const [loading, setLoading] = React.useState<boolean>(true);
@@ -135,6 +137,17 @@ export const useGetData = (
         });
 
         const fetchData = await response.json();
+        if (fetchData.error) {
+          const params = new URLSearchParams();
+          if (fetchData.error.message === "Failed to parse address") {
+            params.set("error", `${fetchData.error.message}: "${address}"`);
+          } else {
+            params.set("error", fetchData.error.message);
+          }
+          params.set("address", address);
+          history.push(`/?${params.toString()}`);
+        }
+
         setData(fetchData);
       } catch (ex) {
         console.error("fetch fail", ex);

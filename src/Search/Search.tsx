@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import arrow from "./media/arrow.svg";
-import { Button, Text } from "../design-system";
+import { Button, Spacer, Text } from "../design-system";
 import * as S from "./SearchStyles";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 
+const useQuery = () => new URLSearchParams(useLocation().search);
+
 const Search: React.FC = () => {
-  const [address, setAddress] = useState("");
+  const query = useQuery();
+  const [address, setAddress] = useState(query.get("address") || "");
   const history = useHistory();
+  const error = query.get("error");
+
   return (
     <S.ContainerOuter>
       <form
@@ -27,6 +32,7 @@ const Search: React.FC = () => {
             onChange={(event) => {
               setAddress(event.target.value);
             }}
+            value={address}
             placeholder="1600 Pennsylvania Ave., Washington, D.C., 20500"
           />
           <Link to={`/result/${address}`}>
@@ -35,6 +41,14 @@ const Search: React.FC = () => {
             </Button>
           </Link>
         </S.ContainerInput>
+        {error ? (
+          <>
+            <Spacer height={32} />
+            <Text typography="paragraph0" color="error">
+              {error}
+            </Text>
+          </>
+        ) : null}
       </form>
       <Footer />
     </S.ContainerOuter>
