@@ -2,8 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useGetData } from "./useResults";
 import { Link } from "react-router-dom";
-import { Spacer, Text } from "../design-system";
-
+import { Box, Spacer, Text } from "../design-system";
+import { Footer } from "../Footer";
 import arrow from "./media/arrow-white.svg";
 import * as S from "./ResultStyles";
 import { formatDate } from "./ResultUtils";
@@ -50,7 +50,12 @@ const Result: React.FC = () => {
     </S.ContainerLocation>
   );
   return (
-    <div>
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="flex-start"
+      height="100%"
+    >
       <Link to="/">
         <S.BackLink>
           <img alt="arrow" src={arrow} />
@@ -74,7 +79,8 @@ const Result: React.FC = () => {
           title="Your Polling Locations"
         />
       )}
-    </div>
+      <Footer />
+    </Box>
   );
 };
 

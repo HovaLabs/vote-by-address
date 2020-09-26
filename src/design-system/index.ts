@@ -1,4 +1,4 @@
-export { Box } from "./Box";
+export * from "./Box";
 export { Button } from "./Button";
 export { ClickOutside } from "./ClickOutside";
 export { CookieWarning } from "./CookieWarning";

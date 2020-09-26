@@ -23,9 +23,17 @@ export const Input = styled.input(
 );
 
 export const ContainerOuter = styled.div`
-  padding: 0 64px 64px 64px;
   align-items: center;
   display: flex;
+  flex-direction: column;
   height: 100vh;
   box-sizing: border-box;
+  position: relative;
+`;
+
+export const Form = styled("form")`
+  position: absolute;
+  margin: 0 64px 64px 64px;
+
+  bottom: 50%;
 `;

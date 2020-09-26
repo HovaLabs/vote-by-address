@@ -30,7 +30,6 @@ export const Logo = styled.a`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 32px 0;
   img {
     padding-right: 12px;
   }

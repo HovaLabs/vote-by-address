@@ -4,7 +4,7 @@ import { Button, Spacer, Text } from "../design-system";
 import * as S from "./SearchStyles";
 import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import Footer from "../Footer/Footer";
+import { Footer } from "../Footer";
 
 const useQuery = () => new URLSearchParams(useLocation().search);
 
@@ -16,7 +16,7 @@ const Search: React.FC = () => {
 
   return (
     <S.ContainerOuter>
-      <form
+      <S.Form
         onSubmit={(e) => {
           // Add onSubmit handler so users can hit enter to submit form
           e.preventDefault();
@@ -49,7 +49,7 @@ const Search: React.FC = () => {
             </Text>
           </>
         ) : null}
-      </form>
+      </S.Form>
       <Footer />
     </S.ContainerOuter>
   );
