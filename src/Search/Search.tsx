@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import google from "./media/google.svg";
 import arrow from "./media/arrow.svg";
 import { Button, Spacer, Text } from "../design-system";
 import * as S from "./SearchStyles";
 import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import Footer from "../Footer/Footer";
+import { Footer } from "../Footer";
 
 const useQuery = () => new URLSearchParams(useLocation().search);
 
@@ -16,7 +17,7 @@ const Search: React.FC = () => {
 
   return (
     <S.ContainerOuter>
-      <form
+      <S.Form
         onSubmit={(e) => {
           // Add onSubmit handler so users can hit enter to submit form
           e.preventDefault();
@@ -49,7 +50,15 @@ const Search: React.FC = () => {
             </Text>
           </>
         ) : null}
-      </form>
+        <Spacer height={32} />
+        <S.Google>
+          Data courtesy of:
+          <Spacer width={12} />
+          <a href="https://developers.google.com/civic-information">
+            <img alt="google-logo" src={google} />
+          </a>
+        </S.Google>
+      </S.Form>
       <Footer />
     </S.ContainerOuter>
   );

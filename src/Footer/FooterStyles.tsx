@@ -10,27 +10,12 @@ export const OuterContainer = styled.div`
   padding: 64px;
 `;
 
-export const Google = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  text-align: left;
-  a {
-    color: #fff;
-    text-decoration: none;
-  }
-  img {
-    padding-top: 12px;
-  }
-`;
-
 export const Logo = styled.a`
   color: #fff;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 32px 0;
   img {
     padding-right: 12px;
   }
