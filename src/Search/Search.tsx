@@ -42,14 +42,6 @@ const Search: React.FC = () => {
             </Button>
           </Link>
         </S.ContainerInput>
-        <Spacer height={32} />
-        <S.Google>
-          Data courtesy of:
-          <Spacer width={12} />
-          <a href="https://developers.google.com/civic-information">
-            <img alt="google-logo" src={google} />
-          </a>
-        </S.Google>
         {error ? (
           <>
             <Spacer height={32} />
@@ -58,6 +50,14 @@ const Search: React.FC = () => {
             </Text>
           </>
         ) : null}
+        <Spacer height={32} />
+        <S.Google>
+          Data courtesy of:
+          <Spacer width={12} />
+          <a href="https://developers.google.com/civic-information">
+            <img alt="google-logo" src={google} />
+          </a>
+        </S.Google>
       </S.Form>
       <Footer />
     </S.ContainerOuter>
