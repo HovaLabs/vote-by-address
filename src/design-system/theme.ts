@@ -55,6 +55,7 @@ const colors = {
   onBackground: hues.shade1100,
   surface: hues.blue0400,
   onSurface: hues.shade1100,
+  error: hues.yellow1000,
 };
 
 const typography = {
@@ -71,7 +72,6 @@ const typography = {
     font-weight: 400;
     line-height: 54px;
     letter-spacing: 1.84px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   heading2: css`
     font-family: roboto;
@@ -79,7 +79,6 @@ const typography = {
     font-weight: 400;
     line-height: 50px;
     letter-spacing: 1.68px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   heading3: css`
     font-family: roboto;
@@ -87,7 +86,6 @@ const typography = {
     font-weight: 400;
     line-height: 44px;
     letter-spacing: 1.52px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   heading4: css`
     font-family: roboto;
@@ -95,7 +93,6 @@ const typography = {
     font-weight: 400;
     line-height: 40px;
     letter-spacing: 1.36px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   heading5: css`
     font-family: roboto;
@@ -103,7 +100,6 @@ const typography = {
     font-weight: 400;
     line-height: 36px;
     letter-spacing: 1.2px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   heading6: css`
     font-family: roboto;
@@ -111,7 +107,6 @@ const typography = {
     font-weight: 400;
     line-height: 30px;
     letter-spacing: 1.04px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   headingBold0: css`
     font-family: roboto;
@@ -126,7 +121,6 @@ const typography = {
     font-weight: 700;
     line-height: 54px;
     letter-spacing: 1.84px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   headingBold2: css`
     font-family: roboto;
@@ -134,7 +128,6 @@ const typography = {
     font-weight: 700;
     line-height: 50px;
     letter-spacing: 1.68px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   headingBold3: css`
     font-family: roboto;
@@ -142,7 +135,6 @@ const typography = {
     font-weight: 700;
     line-height: 44px;
     letter-spacing: 1.52px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   headingBold4: css`
     font-family: roboto;
@@ -150,7 +142,6 @@ const typography = {
     font-weight: 700;
     line-height: 40px;
     letter-spacing: 1.36px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   headingBold5: css`
     font-family: roboto;
@@ -158,7 +149,6 @@ const typography = {
     font-weight: 700;
     line-height: 36px;
     letter-spacing: 1.2px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   headingBold6: css`
     font-family: roboto;
@@ -166,7 +156,6 @@ const typography = {
     font-weight: 700;
     line-height: 30px;
     letter-spacing: 1.04px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   paragraph0: css`
     font-family: roboto;
@@ -174,7 +163,6 @@ const typography = {
     font-weight: 400;
     line-height: 26px;
     letter-spacing: 2.2px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   paragraph1: css`
     font-family: roboto;
@@ -182,7 +170,6 @@ const typography = {
     font-weight: 400;
     line-height: 22px;
     letter-spacing: 1.98px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   paragraph2: css`
     font-family: roboto;
@@ -190,7 +177,6 @@ const typography = {
     font-weight: 400;
     line-height: 20px;
     letter-spacing: 1.76px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   paragraphBold0: css`
     font-family: roboto;
@@ -198,7 +184,6 @@ const typography = {
     font-weight: 700;
     line-height: 26px;
     letter-spacing: 2.2px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   paragraphBold1: css`
     font-family: roboto;
@@ -206,7 +191,6 @@ const typography = {
     font-weight: 700;
     line-height: 22px;
     letter-spacing: 1.98px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   paragraphBold2: css`
     font-family: roboto;
@@ -214,7 +198,6 @@ const typography = {
     font-weight: 700;
     line-height: 20px;
     letter-spacing: 1.76px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   label0: css`
     font-family: roboto;
@@ -222,7 +205,6 @@ const typography = {
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 0;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   label1: css`
     font-family: roboto;
@@ -230,7 +212,6 @@ const typography = {
     font-weight: 700;
     line-height: 20px;
     letter-spacing: 0;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
 };
 
