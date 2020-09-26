@@ -158,7 +158,7 @@ export const useGetData = (
     };
 
     doTheThing();
-  }, [address]);
+  }, [address, history]);
 
   const { columnsPollingLocations, rowsPollingLocations } = getPollingLocations(
     data
