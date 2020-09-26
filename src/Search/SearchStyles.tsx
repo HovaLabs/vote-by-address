@@ -31,6 +31,20 @@ export const ContainerOuter = styled.div`
   position: relative;
 `;
 
+export const Google = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: left;
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  img {
+    padding-top: 12px;
+  }
+`;
+
 export const Form = styled("form")`
   position: absolute;
   margin: 0 64px 64px 64px;

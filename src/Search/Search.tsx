@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import google from "./media/google.svg";
 import arrow from "./media/arrow.svg";
 import { Button, Spacer, Text } from "../design-system";
 import * as S from "./SearchStyles";
@@ -41,6 +42,14 @@ const Search: React.FC = () => {
             </Button>
           </Link>
         </S.ContainerInput>
+        <Spacer height={32} />
+        <S.Google>
+          Data courtesy of:
+          <Spacer width={12} />
+          <a href="https://developers.google.com/civic-information">
+            <img alt="google-logo" src={google} />
+          </a>
+        </S.Google>
         {error ? (
           <>
             <Spacer height={32} />
