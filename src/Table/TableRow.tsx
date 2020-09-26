@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./TableStyles";
-import { Box, Text } from "../design-system";
+import { Box, Spacer, Text } from "../design-system";
 
 import { ColumnsType, RowType } from "./TableTypes";
 import { getIsLink } from "./TableUtils";
@@ -28,6 +28,7 @@ const TableRow: React.FC<{ row: RowType; columns: ColumnsType }> = ({
           {title}
           <S.EmptyValue>
             <S.Line />
+            <Spacer width={32} />
           </S.EmptyValue>
         </Box>
       );
