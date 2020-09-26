@@ -10,40 +10,52 @@ export const {
 } = baseStyled as baseStyled.ThemedStyledComponentsModule<Theme>;
 
 const hues = {
-  blue1100: "#2146ff",
-  blue1000: "#2146fd",
-  blue0900: "#2145fb",
-  blue0800: "#2044f4",
-  blue0700: "#2041e9",
-  blue0600: "#1f3ed9",
-  blue0500: "#1d39c5",
-  blue0400: "#1b33aa",
-  blue0300: "#192b87",
-  blue0200: "#17235e",
-  blue0100: "#101530",
+  shade1100: "#ffffff",
+  shade1000: "#f2f2f2",
+  shade0900: "#e6e6e6",
+  shade0800: "#cccccc",
+  shade0700: "#b3b3b3",
+  shade0600: "#999999",
+  shade0500: "#808080",
+  shade0400: "#666666",
+  shade0300: "#4d4d4d",
+  shade0200: "#333333",
+  shade0100: "#1a1a1a",
+  shade0000: "#000000",
 
-  yellow1100: "#ffd736",
-  yellow1000: "#fdd843",
-  yellow0900: "#fbd951",
-  yellow0800: "#f4d65f",
-  yellow0700: "#e9ce64",
-  yellow0600: "#d9c264",
-  yellow0500: "#c5b05d",
-  yellow0400: "#aa9853",
-  yellow0300: "#877a43",
-  yellow0200: "#5e552f",
-  yellow0100: "#302b18",
-  black: "#000000",
-  white: "#ffffff",
+  blue1100: "#d1d8ff",
+  blue1000: "#c3caef",
+  blue0900: "#b6bcde",
+  blue0800: "#979cb8",
+  blue0700: "#787c92",
+  blue0600: "#5b5e6f",
+  blue0500: "#434552",
+  blue0400: "#30323b",
+  blue0300: "#23242b",
+  blue0200: "#1c1c22",
+  blue0100: "#191a1f",
+
+  yellow1100: "#fff1b9",
+  yellow1000: "#fceeb7",
+  yellow0900: "#f8ebb5",
+  yellow0800: "#e9dca9",
+  yellow0700: "#cfc496",
+  yellow0600: "#aca37d",
+  yellow0500: "#857e61",
+  yellow0400: "#615c47",
+  yellow0300: "#474334",
+  yellow0200: "#373428",
+  yellow0100: "#302e23",
 };
 
 const colors = {
-  primary: hues.yellow0500,
-  onPrimary: hues.blue0100,
-  background: hues.blue0100,
-  onBackground: hues.white,
-  surface: hues.blue0300,
-  onSurface: hues.white,
+  primary: hues.yellow0700,
+  onPrimary: hues.shade0000,
+  background: hues.blue0200,
+  onBackground: hues.shade1100,
+  surface: hues.blue0400,
+  onSurface: hues.shade1100,
+  error: hues.yellow1000,
 };
 
 const typography = {
@@ -51,9 +63,8 @@ const typography = {
     font-family: roboto;
     font-size: 50px;
     font-weight: 400;
-    line-height: 60px;
+    line-height: 70px;
     letter-spacing: 2px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   heading1: css`
     font-family: roboto;
@@ -61,7 +72,6 @@ const typography = {
     font-weight: 400;
     line-height: 54px;
     letter-spacing: 1.84px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   heading2: css`
     font-family: roboto;
@@ -69,7 +79,6 @@ const typography = {
     font-weight: 400;
     line-height: 50px;
     letter-spacing: 1.68px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   heading3: css`
     font-family: roboto;
@@ -77,7 +86,6 @@ const typography = {
     font-weight: 400;
     line-height: 44px;
     letter-spacing: 1.52px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   heading4: css`
     font-family: roboto;
@@ -85,7 +93,6 @@ const typography = {
     font-weight: 400;
     line-height: 40px;
     letter-spacing: 1.36px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   heading5: css`
     font-family: roboto;
@@ -93,7 +100,6 @@ const typography = {
     font-weight: 400;
     line-height: 36px;
     letter-spacing: 1.2px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   heading6: css`
     font-family: roboto;
@@ -101,15 +107,13 @@ const typography = {
     font-weight: 400;
     line-height: 30px;
     letter-spacing: 1.04px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   headingBold0: css`
     font-family: roboto;
     font-size: 50px;
     font-weight: 700;
-    line-height: 60px;
+    line-height: 70px;
     letter-spacing: 2px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   headingBold1: css`
     font-family: roboto;
@@ -117,7 +121,6 @@ const typography = {
     font-weight: 700;
     line-height: 54px;
     letter-spacing: 1.84px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   headingBold2: css`
     font-family: roboto;
@@ -125,7 +128,6 @@ const typography = {
     font-weight: 700;
     line-height: 50px;
     letter-spacing: 1.68px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   headingBold3: css`
     font-family: roboto;
@@ -133,7 +135,6 @@ const typography = {
     font-weight: 700;
     line-height: 44px;
     letter-spacing: 1.52px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   headingBold4: css`
     font-family: roboto;
@@ -141,7 +142,6 @@ const typography = {
     font-weight: 700;
     line-height: 40px;
     letter-spacing: 1.36px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   headingBold5: css`
     font-family: roboto;
@@ -149,7 +149,6 @@ const typography = {
     font-weight: 700;
     line-height: 36px;
     letter-spacing: 1.2px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   headingBold6: css`
     font-family: roboto;
@@ -157,7 +156,6 @@ const typography = {
     font-weight: 700;
     line-height: 30px;
     letter-spacing: 1.04px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   paragraph0: css`
     font-family: roboto;
@@ -165,7 +163,6 @@ const typography = {
     font-weight: 400;
     line-height: 26px;
     letter-spacing: 2.2px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   paragraph1: css`
     font-family: roboto;
@@ -173,7 +170,6 @@ const typography = {
     font-weight: 400;
     line-height: 22px;
     letter-spacing: 1.98px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   paragraph2: css`
     font-family: roboto;
@@ -181,7 +177,6 @@ const typography = {
     font-weight: 400;
     line-height: 20px;
     letter-spacing: 1.76px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   paragraphBold0: css`
     font-family: roboto;
@@ -189,7 +184,6 @@ const typography = {
     font-weight: 700;
     line-height: 26px;
     letter-spacing: 2.2px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   paragraphBold1: css`
     font-family: roboto;
@@ -197,7 +191,6 @@ const typography = {
     font-weight: 700;
     line-height: 22px;
     letter-spacing: 1.98px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   paragraphBold2: css`
     font-family: roboto;
@@ -205,7 +198,6 @@ const typography = {
     font-weight: 700;
     line-height: 20px;
     letter-spacing: 1.76px;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   label0: css`
     font-family: roboto;
@@ -213,7 +205,6 @@ const typography = {
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 0;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
   label1: css`
     font-family: roboto;
@@ -221,7 +212,6 @@ const typography = {
     font-weight: 700;
     line-height: 20px;
     letter-spacing: 0;
-    color: ${(p) => p.theme.colors.onBackground};
   `,
 };
 

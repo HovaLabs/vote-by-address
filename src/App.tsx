@@ -1,57 +1,39 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  Grid,
-  Text,
-  Stack,
-  DesignSystemProvider,
-} from "./packages/design-system";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import Search from "./Search/Search";
+import Result from "./Result/Result";
+import * as S from "./AppStyles";
+import { DesignSystemProvider } from "./design-system";
+import { AnalyticsProvider } from "./Analytics";
+import { AnalyticsConsent } from "./AnalyticsConsent";
 
 const App: React.FC = () => {
   return (
-    <DesignSystemProvider>
-      <Stack
-        space="32px"
-        direction="vertical"
-        bg="surface"
-        position="absolute"
-        top="0"
-        bottom="0"
-        left="0"
-        right="0"
-      >
-        <Text as="h1" typography="headingBold0">
-          Oh
-        </Text>
-        <Text typography={{ mobile: "heading0", tablet: "heading1" }}>
-          Hello World
-        </Text>
-        <Button
-          size="medium"
-          variant="primary"
-          width={{ mobile: 120, tablet: 160, desktop: 200 }}
-          onClick={() => alert("dang")}
-        >
-          Click me!
-        </Button>
-      </Stack>
-      <Grid
-        gridTemplateColumns={{
-          mobile: "1fr",
-          tablet: "1fr 1fr",
-          desktop: "1fr 1fr 1fr",
-        }}
-      >
-        <Box>Oh</Box>
-        <Box>Oh</Box>
-        <Box>Oh</Box>
-        <Box>Oh</Box>
-        <Box>Oh</Box>
-        <Box>Oh</Box>
-      </Grid>
-    </DesignSystemProvider>
+    <>
+      <Router>
+        <S.ContainerOuter>
+          <Switch>
+            <Route path="/result/:address">
+              <Result />
+            </Route>
+            <Route path="/">
+              <Search />
+            </Route>
+          </Switch>
+        </S.ContainerOuter>
+      </Router>
+      <AnalyticsConsent />
+    </>
   );
 };
 
-export default App;
+const AppWithContexts: React.FC = () => (
+  <DesignSystemProvider>
+    <AnalyticsProvider>
+      <App />
+    </AnalyticsProvider>
+  </DesignSystemProvider>
+);
+
+export default AppWithContexts;
