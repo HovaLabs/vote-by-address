@@ -36,7 +36,7 @@ export const Text = styled(Box)<
     // eslint-disable-next-line
     // @ts-ignore
     if (p.typography[breakpointKey] == null) {
-      return;
+      return "";
     }
     // eslint-disable-next-line
     // @ts-ignore

@@ -6,7 +6,7 @@ import { Spacer, Text } from "../design-system";
 
 import arrow from "./media/arrow-white.svg";
 import * as S from "./ResultStyles";
-import { formatDate, usePollingLocations, useStateInfo } from "./ResultUtils";
+import { formatDate } from "./ResultUtils";
 import Table from "../Table/Table";
 
 const Result: React.FC = () => {
@@ -14,7 +14,6 @@ const Result: React.FC = () => {
   const {
     data,
     loading,
-    error,
     columnsPollingLocations,
     rowsPollingLocations,
     columnsStateInfo,
@@ -54,7 +53,7 @@ const Result: React.FC = () => {
     <div>
       <Link to="/">
         <S.BackLink>
-          <img src={arrow} />
+          <img alt="arrow" src={arrow} />
           <Text as="p" typography="paragraph0">
             Back to Address Form
           </Text>

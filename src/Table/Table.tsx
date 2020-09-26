@@ -6,7 +6,7 @@ import { TableType } from "./TableTypes";
 
 const Table: React.FC<TableType> = ({ rows, columns, title }) => {
   const columnsPrintout = columns.map((column) => {
-    const { name, width } = column;
+    const { name } = column;
     return (
       <Text as="h5" padding="20px" typography="paragraphBold1">
         {name}

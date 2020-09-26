@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
   return (
     <S.OuterContainer>
       <S.Logo href="https://www.hovalabs.com/" target="_blank">
-        <img src={logo} />
+        <img alt="logo" src={logo} />
         {/* @ts-ignore */}
         <Text as="p" typography="paragraph1">
           Powered by Hova Labs
@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
       </S.Logo>
       <S.Google>
         <a href="https://developers.google.com/civic-information">
-          <img src={google} />
+          <img alt="google-logo" src={google} />
         </a>
       </S.Google>
     </S.OuterContainer>
