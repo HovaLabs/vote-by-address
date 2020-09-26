@@ -34,6 +34,6 @@ export const ContainerOuter = styled.div`
 export const Form = styled("form")`
   position: absolute;
   margin: 0 64px 64px 64px;
-
+  left: 0;
   bottom: 50%;
 `;
