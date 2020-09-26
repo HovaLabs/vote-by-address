@@ -37,7 +37,7 @@ const Search: React.FC = () => {
           />
           <Link to={`/result/${address}`}>
             <Button size="mediumSquare" variant="primarySquare">
-              <img src={arrow} />
+              <img alt="arror" src={arrow} />
             </Button>
           </Link>
         </S.ContainerInput>

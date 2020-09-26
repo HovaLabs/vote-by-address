@@ -30,7 +30,7 @@ export const CookieWarning: React.FC<{
       <Box
         position="fixed"
         display="flex"
-        bottom="0"
+        top="0"
         left="0"
         right="0"
         bg="surface"
