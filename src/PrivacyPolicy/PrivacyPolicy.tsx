@@ -3,7 +3,7 @@ import { Box, Spacer, Stack, Text } from "../design-system";
 import { Footer } from "../Footer";
 
 export const PrivacyPolicy: React.FC = () => (
-  <Stack direction="vertical" space="32px" padding="32px">
+  <Stack flexDirection="column" space="32px" padding="32px">
     <Box>
       <a href="/">← Back to website</a>
     </Box>
