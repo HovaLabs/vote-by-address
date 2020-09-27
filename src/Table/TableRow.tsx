@@ -5,7 +5,8 @@ import { Box, Spacer, Text } from "../design-system";
 import { ColumnsType, RowType } from "./TableTypes";
 import { getDateInfo, getIsLink } from "./TableUtils";
 
-const TableRow: React.FC<{ row: RowType; columns: ColumnsType }> = ({
+const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
+  data,
   row,
   columns,
 }) => {
@@ -41,6 +42,28 @@ const TableRow: React.FC<{ row: RowType; columns: ColumnsType }> = ({
               <Text as="p" typography="paragraph0" wordBreak="break-word">
                 {item}
               </Text>
+            </a>
+          </Box>
+        );
+      }
+      if (["ADDRESS"].includes(columns[index].name)) {
+        const { latitude, longitude } = data[index];
+        const { line1, line2, locationName, state, zip } = data[index].address;
+        return (
+          <Box backgroundColor="surface" padding="20px">
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href={`https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`}
+            >
+              {locationName && (
+                <div>
+                  <strong>{locationName}</strong>
+                </div>
+              )}
+              {line1 && <div>{line1}</div>}
+              {line2 && <div>{line2}</div>}
+              {[state, zip].join(" ")}
             </a>
           </Box>
         );

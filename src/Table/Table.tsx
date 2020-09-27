@@ -4,7 +4,7 @@ import { Text, Grid } from "../design-system";
 import TableRow from "./TableRow";
 import { TableType } from "./TableTypes";
 
-const Table: React.FC<TableType> = ({ rows, columns, title }) => {
+const Table: React.FC<TableType> = ({ data, rows, columns, title }) => {
   const columnsPrintout = columns.map((column) => {
     const { name } = column;
     return (
@@ -15,7 +15,7 @@ const Table: React.FC<TableType> = ({ rows, columns, title }) => {
   });
 
   const rowsPrintout = rows.map((row) => {
-    return <TableRow row={row} columns={columns} />;
+    return <TableRow data={data} row={row} columns={columns} />;
   });
 
   return (
