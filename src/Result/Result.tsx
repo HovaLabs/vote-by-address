@@ -16,8 +16,8 @@ const Result: React.FC = () => {
     loading,
     columnsEarlyVoteSites,
     rowsEarlyVoteSites,
-    columnsPollingLocations,
-    rowsPollingLocations,
+    columnsDropOffLocations,
+    rowsDropOffLocations,
     columnsStateInfo,
     rowsStateInfo,
   } = useGetData(address || "");
@@ -25,7 +25,7 @@ const Result: React.FC = () => {
   if (loading || data == null) {
     return <p>...Loading</p>;
   }
-
+  debugger;
   // ELECTION DATA
   const { line1, city, state, zip } = data.normalizedInput;
   const { electionDay, name } = data.election;
@@ -83,12 +83,12 @@ const Result: React.FC = () => {
           title="Your Early Vote Locations"
         />
       )}
-      {data.pollingLocations && (
+      {data.dropOffLocations && (
         <Table
-          columns={columnsPollingLocations}
-          data={data.pollingLocations}
-          rows={rowsPollingLocations}
-          title="Your Polling Locations"
+          columns={columnsDropOffLocations}
+          data={data.dropOffLocations}
+          rows={rowsDropOffLocations}
+          title="Your Ballot Drop Box Locations"
         />
       )}
       <Footer />
