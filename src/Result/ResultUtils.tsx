@@ -25,6 +25,7 @@ export const usePollingLocations = (
   if (data === null || data.pollingLocations === undefined) {
     return { columnsPollingLocations: [], rowsPollingLocations: [] };
   }
+
   const { pollingLocations } = data;
 
   const columnsPollingLocations: { width: string; name: string }[] = [
@@ -62,7 +63,6 @@ export const useStateInfo = (data: any | null): HookOutputStateInfo => {
     return { columnsStateInfo: [], rowsStateInfo: [] };
   }
   const { state } = data;
-
   const columnsStateInfo: { width: string; name: string }[] = [
     { width: "1fr", name: "BALLOT INFO" },
     { width: "1fr", name: "ELECTION INFO" },

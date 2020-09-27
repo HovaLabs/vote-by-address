@@ -14,6 +14,8 @@ const Result: React.FC = () => {
   const {
     data,
     loading,
+    columnsEarlyVoteSites,
+    rowsEarlyVoteSites,
     columnsPollingLocations,
     rowsPollingLocations,
     columnsStateInfo,
@@ -70,6 +72,13 @@ const Result: React.FC = () => {
           columns={columnsStateInfo}
           rows={rowsStateInfo}
           title={`Official ${data.state[0].name} State Voting Information`}
+        />
+      )}
+      {data.earlyVoteSites && (
+        <Table
+          columns={columnsEarlyVoteSites}
+          rows={rowsEarlyVoteSites}
+          title="Your Early Vote Locations"
         />
       )}
       {data.pollingLocations && (

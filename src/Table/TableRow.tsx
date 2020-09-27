@@ -45,7 +45,23 @@ const TableRow: React.FC<{ row: RowType; columns: ColumnsType }> = ({
           </Box>
         );
       }
-
+      if (["POLLING HOURS"].includes(columns[index].name)) {
+        const stringArray = item.split(/\r?\n/);
+        const printOut = stringArray.map((day) => {
+          return (
+            <>
+              <span>{day}</span>
+              <Spacer height={12} />
+            </>
+          );
+        });
+        return (
+          <Box backgroundColor="surface" padding="20px">
+            {title}
+            {printOut}
+          </Box>
+        );
+      }
       return (
         <Box backgroundColor="surface" padding="20px">
           {title}
