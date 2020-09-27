@@ -32,10 +32,11 @@ export const CookieWarning: React.FC<{
         color="background"
         position="fixed"
         display="flex"
-        top={{ tablet: 0 }}
         left="0"
         right="0"
+        top={{ tablet: 0 }}
         bottom={{ mobile: 0, tablet: "auto" }}
+        zIndex={2}
         bg="onBackground"
         padding="32px"
       >
