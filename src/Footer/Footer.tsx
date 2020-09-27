@@ -30,7 +30,9 @@ export const Footer: React.FC = () => {
       <Box display="flex" flexDirection={{ mobile: "column", tablet: "row" }}>
         <Spacer height={{ mobile: "32px", tablet: "64px" }} />
         <Box display="flex" alignItems="flex-end">
-          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/privacy-policy">
+            <Text typography="paragraph1">Privacy Policy</Text>
+          </a>
           <Box display={{ mobile: "none", tablet: "flex" }}>
             <Spacer width="32px" />
             <Text typography="paragraph0" color="primary">
@@ -40,7 +42,9 @@ export const Footer: React.FC = () => {
           </Box>
         </Box>
         <Box display="flex" alignItems="flex-end">
-          <a href="/terms-of-use">Terms of use</a>
+          <a href="/terms-of-use">
+            <Text typography="paragraph1">Terms of use</Text>
+          </a>
           <Spacer height={{ mobile: "38px", tablet: 0 }} />
           <Box display={{ mobile: "none", tablet: "flex" }}>
             <Spacer width="32px" />
@@ -52,12 +56,13 @@ export const Footer: React.FC = () => {
         </Box>
         <Box display="flex" alignItems="flex-end">
           <Spacer height={{ mobile: "38px", tablet: 0 }} />
+
           <a
             href="https://forms.gle/nDFm7oMuTZhJGPe66"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Contact Us
+            <Text typography="paragraph1">Contact Us</Text>
           </a>
         </Box>
       </Box>
