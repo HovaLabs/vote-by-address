@@ -15,7 +15,7 @@ export const Input = styled.input(
   color: ${p.theme.colors.onSurface};
   width: 80%;
   max-width: 500px;
-  padding: 18px;
+  padding: 14px;
   &:focus {
     outline: none;
   }
