@@ -21,6 +21,7 @@ export const Footer: React.FC = () => {
           <Text as="p" typography="paragraph1">
             Powered by Hova Labs
           </Text>
+          <Spacer width="32px" />
         </S.Logo>
       </Stack>
       <Stack direction="vertical" space="16px">
