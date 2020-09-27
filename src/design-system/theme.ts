@@ -175,14 +175,14 @@ const typography = {
     font-family: roboto;
     font-size: 16px;
     font-weight: 400;
-    line-height: 20px;
+    line-height: 30px;
     letter-spacing: 1.76px;
   `,
   paragraphBold0: css`
     font-family: roboto;
     font-size: 20px;
     font-weight: 700;
-    line-height: 26px;
+    line-height: 30px;
     letter-spacing: 2.2px;
   `,
   paragraphBold1: css`

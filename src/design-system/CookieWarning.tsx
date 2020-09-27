@@ -1,8 +1,9 @@
 import React from "react";
 import { useLocalStorage } from "react-use";
-
+import { Text } from "../design-system";
 import { Box } from "./Box";
 import { Portal } from "./Portal";
+import * as S from "./CookieWarningStyles";
 
 export const CookieWarning: React.FC<{
   cookieKey: string;
@@ -34,7 +35,7 @@ export const CookieWarning: React.FC<{
         left="0"
         right="0"
         bg="surface"
-        padding="16px"
+        padding="32px"
       >
         {children}
         <Box
@@ -42,7 +43,14 @@ export const CookieWarning: React.FC<{
           alignSelf="flex-start"
           onClick={() => setBannerAcknowledged(true)}
         >
-          X
+          <Text
+            cursor="pointer"
+            typography="heading1"
+            position="absolute"
+            top="18px"
+          >
+            <S.x>+</S.x>
+          </Text>
         </Box>
       </Box>
     </Portal>
