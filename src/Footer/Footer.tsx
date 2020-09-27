@@ -43,7 +43,7 @@ export const Footer: React.FC = () => {
         </Box>
         <Box display="flex" alignItems="flex-end">
           <a href="/terms-of-use">
-            <Text typography="paragraph1">Terms of use</Text>
+            <Text typography="paragraph1">Terms of Use</Text>
           </a>
           <Spacer height={{ mobile: "38px", tablet: 0 }} />
           <Box display={{ mobile: "none", tablet: "flex" }}>

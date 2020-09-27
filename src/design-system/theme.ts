@@ -86,6 +86,7 @@ const typography = {
     font-weight: 400;
     line-height: 44px;
     letter-spacing: 1.52px;
+    margin-bottom: 20px;
   `,
   heading4: css`
     font-family: roboto;
@@ -161,7 +162,7 @@ const typography = {
     font-family: roboto;
     font-size: 20px;
     font-weight: 400;
-    line-height: 26px;
+    line-height: 34px;
     letter-spacing: 2.2px;
   `,
   paragraph1: css`
