@@ -20,7 +20,7 @@ export const ContainerTitles = styled.div`
 
 export const EmptyValue = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 100%;
   height: 100%;
