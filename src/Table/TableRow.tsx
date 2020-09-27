@@ -15,7 +15,6 @@ const TableRow: React.FC<{ row: RowType; columns: ColumnsType }> = ({
         as="p"
         display={{ mobile: "block", desktop: "none" }}
         typography="paragraph0"
-        padding="0 0 10px 0"
       >
         {columns[index].name}
       </Text>
@@ -24,11 +23,11 @@ const TableRow: React.FC<{ row: RowType; columns: ColumnsType }> = ({
     // If there is no data available for an item
     if (item === undefined || item === "") {
       return (
-        <Box backgroundColor="surface">
+        <Box backgroundColor="surface" padding="20px">
           {title}
           <S.EmptyValue>
             <S.Line />
-            <Spacer width={32} />
+            <Spacer width={20} />
           </S.EmptyValue>
         </Box>
       );
