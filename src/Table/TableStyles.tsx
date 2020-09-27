@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerTable = styled.div`
-  padding: 8px 38px;
+  padding: 8px 32px;
 `;
 
 export const ContainerOuter = styled.div`
