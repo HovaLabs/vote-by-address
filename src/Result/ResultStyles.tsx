@@ -10,8 +10,9 @@ export const BackLink = styled.button`
   border: none;
   transition: 0.5s;
   cursor: pointer;
+  color: ${(p) => p.theme.colors.onBackground};
   &:hover {
-    color: #cfc59f;
+    color: ${(p) => p.theme.colors.primary};
   }
   img {
     transform: rotate(180deg);

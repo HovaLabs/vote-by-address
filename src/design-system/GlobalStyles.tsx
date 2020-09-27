@@ -17,5 +17,25 @@ h1, h2, h3, h4, h5, h6 {
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
+a { 
+    color: ${(p) => p.theme.colors.primary};
+}
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+} 
 `;
