@@ -29,12 +29,13 @@ export const CookieWarning: React.FC<{
   return (
     <Portal>
       <Box
+        color="background"
         position="fixed"
         display="flex"
         top="0"
         left="0"
         right="0"
-        bg="surface"
+        bg="onBackground"
         padding="32px"
       >
         {children}
