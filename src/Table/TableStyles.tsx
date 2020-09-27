@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const ContainerTable = styled.div`
   padding: 32px;
   width: 100%;
+  @media only screen and (min-width: ${(p) => p.theme.breakpoints.desktop}) {
+    padding: 64px;
+  }
 `;
 
 export const ContainerOuter = styled.div`

@@ -25,7 +25,7 @@ const Result: React.FC = () => {
   if (loading || data == null) {
     return <p>...Loading</p>;
   }
-  debugger;
+
   // ELECTION DATA
   const { line1, city, state, zip } = data.normalizedInput;
   const { electionDay, name } = data.election;
@@ -91,6 +91,16 @@ const Result: React.FC = () => {
           title="Your Ballot Drop Box Locations"
         />
       )}
+      <Spacer height={64} />
+      <Box padding={{ mobile: 32, tablet: 32, desktop: 64 }}>
+        <Text typography="paragraph0">
+          Want to know if/when more data is coming? Check out{" "}
+          <a href="https://docs.google.com/spreadsheets/d/17sOYnw7VGg-1LVCKplvqc38HOpYdoKT0wPyWcMRoKSg/edit#gid=0">
+            this official spreadsheet
+          </a>
+          !
+        </Text>
+      </Box>
       <Footer />
     </Box>
   );
