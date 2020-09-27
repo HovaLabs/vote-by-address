@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
       display="flex"
       width="100%"
       flex="none"
-      padding={{ mobile: "32px", tablet: "64px" }}
+      padding={{ mobile: "32px", tablet: "32px", desktop: "64px" }}
       alignItems={{ mobile: "flex-start", tablet: "flex-end" }}
       justifyContent={{ mobile: "flex-end", tablet: "space-between" }}
       marginTop="auto"

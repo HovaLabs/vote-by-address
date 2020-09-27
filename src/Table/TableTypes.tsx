@@ -11,4 +11,9 @@ export type RowsType = RowType[];
 
 // Table
 
-export type TableType = { rows: RowsType; columns: ColumnsType; title: string };
+export type TableType = {
+  data: any;
+  rows: RowsType;
+  columns: ColumnsType;
+  title: string;
+};

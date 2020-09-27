@@ -3,9 +3,10 @@ import * as S from "./TableStyles";
 import { Box, Spacer, Text } from "../design-system";
 
 import { ColumnsType, RowType } from "./TableTypes";
-import { getIsLink } from "./TableUtils";
+import { getDateInfo, getIsLink } from "./TableUtils";
 
-const TableRow: React.FC<{ row: RowType; columns: ColumnsType }> = ({
+const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
+  data,
   row,
   columns,
 }) => {
@@ -45,7 +46,67 @@ const TableRow: React.FC<{ row: RowType; columns: ColumnsType }> = ({
           </Box>
         );
       }
-
+      if (["ADDRESS"].includes(columns[index].name)) {
+        const { latitude, longitude } = data[index];
+        const { line1, line2, locationName, state, zip } = data[index].address;
+        return (
+          <Box backgroundColor="surface" padding="20px">
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href={`https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`}
+            >
+              {locationName && (
+                <div>
+                  <strong>{locationName}</strong>
+                </div>
+              )}
+              {line1 && <div>{line1}</div>}
+              {line2 && <div>{line2}</div>}
+              {[state, zip].join(" ")}
+            </a>
+          </Box>
+        );
+      }
+      if (["POLLING HOURS"].includes(columns[index].name)) {
+        const stringArray = item.split(/\r?\n/);
+        const printOut = stringArray.map((day) => {
+          const { isInFuture, isToday, isInPast } = getDateInfo(day);
+          const dayPrintout = () => {
+            if (isInPast) {
+              return (
+                <S.DatePast>
+                  {day}
+                  <Spacer height={12} />
+                </S.DatePast>
+              );
+            }
+            if (isToday) {
+              return (
+                <S.DateToday>
+                  {day}
+                  <Spacer height={12} />
+                </S.DateToday>
+              );
+            }
+            if (isInFuture) {
+              return (
+                <>
+                  {day}
+                  <Spacer height={12} />
+                </>
+              );
+            }
+          };
+          return dayPrintout();
+        });
+        return (
+          <Box backgroundColor="surface" padding="20px">
+            {title}
+            {printOut}
+          </Box>
+        );
+      }
       return (
         <Box backgroundColor="surface" padding="20px">
           {title}

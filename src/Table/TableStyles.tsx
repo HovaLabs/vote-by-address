@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const ContainerTable = styled.div`
-  padding: 8px 32px;
+  padding: 32px;
+  width: 100%;
+  @media only screen and (min-width: ${(p) => p.theme.breakpoints.desktop}) {
+    padding: 64px;
+  }
 `;
 
 export const ContainerOuter = styled.div`
@@ -20,6 +24,15 @@ export const EmptyValue = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
+`;
+
+export const DatePast = styled.span`
+  text-decoration: line-through;
+`;
+
+export const DateToday = styled.span`
+  background: ${(p) => p.theme.colors.primary};
+  color: ${(p) => p.theme.colors.background};
 `;
 
 export const Line = styled.div`
