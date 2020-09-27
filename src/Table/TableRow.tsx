@@ -15,6 +15,7 @@ const TableRow: React.FC<{ row: RowType; columns: ColumnsType }> = ({
         as="p"
         display={{ mobile: "block", desktop: "none" }}
         typography="paragraph0"
+        padding="0 0 10px 0"
       >
         {columns[index].name}
       </Text>
