@@ -51,7 +51,12 @@ const TableRow: React.FC<{ row: RowType; columns: ColumnsType }> = ({
           const { isInFuture, isToday, isInPast } = getDateInfo(day);
           const dayPrintout = () => {
             if (isInPast) {
-              return <></>;
+              return (
+                <S.DatePast>
+                  {day}
+                  <Spacer height={12} />
+                </S.DatePast>
+              );
             }
             if (isToday) {
               return (
@@ -72,7 +77,6 @@ const TableRow: React.FC<{ row: RowType; columns: ColumnsType }> = ({
           };
           return dayPrintout();
         });
-        debugger;
         return (
           <Box backgroundColor="surface" padding="20px">
             {title}

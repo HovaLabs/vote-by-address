@@ -1,5 +1,3 @@
-import { Text } from "../design-system";
-
 const isLink = new RegExp(
   "^(https?:\\/\\/)?" + // protocol
     "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name

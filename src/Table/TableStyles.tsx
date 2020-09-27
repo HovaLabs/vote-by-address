@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerTable = styled.div`
-  padding: 8px 32px;
+  padding: 32px;
   width: 100%;
 `;
 
@@ -21,6 +21,10 @@ export const EmptyValue = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
+`;
+
+export const DatePast = styled.span`
+  text-decoration: line-through;
 `;
 
 export const DateToday = styled.span`
