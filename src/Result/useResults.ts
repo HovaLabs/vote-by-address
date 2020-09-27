@@ -291,7 +291,11 @@ export const getStateInfo = (data: RequestData): StateInfo => {
   return { columnsStateInfo, rowsStateInfo };
 };
 
-export const formatDate = (date: string): string => {
+export const formatDate = (date: string | undefined): string => {
+  if (date === undefined) {
+    return "";
+  }
+  debugger;
   const d = new Date(date.replace(/-/g, "/"));
   const ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(d);
   const mo = new Intl.DateTimeFormat("en", { month: "long" }).format(d);
