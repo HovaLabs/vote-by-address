@@ -10,10 +10,11 @@ export const Footer: React.FC = () => {
       width="100%"
       flex="none"
       padding={{ mobile: "32px", tablet: "64px" }}
-      justifyContent="space-between"
-      alignItems="flex-end"
-      flexWrap="wrap"
+      alignItems={{ mobile: "flex-start", tablet: "flex-end" }}
+      justifyContent={{ mobile: "flex-end", tablet: "space-between" }}
       marginTop="auto"
+      flexDirection={{ mobile: "column", tablet: "row" }}
+      flexWrap="wrap"
     >
       <Stack flexDirection="column" space="32px">
         <S.Logo href="https://www.hovalabs.com/" target="_blank">
@@ -24,15 +25,31 @@ export const Footer: React.FC = () => {
           <Spacer width="32px" />
         </S.Logo>
       </Stack>
-      <Stack flexDirection="column" space="16px">
-        <Spacer height="16px" />
-        <Box>
+      <Box display="flex" flexDirection={{ mobile: "column", tablet: "row" }}>
+        <Spacer height={{ mobile: "32px", tablet: "64px" }} />
+        <Box display="flex" alignItems="flex-end">
           <a href="/privacy-policy">Privacy Policy</a>
+          <Box display={{ mobile: "none", tablet: "flex" }}>
+            <Spacer width="32px" />
+            <Text typography="paragraph0" color="primary">
+              |
+            </Text>
+            <Spacer width="32px" />
+          </Box>
         </Box>
-        <Box>
+        <Box display="flex" alignItems="flex-end">
           <a href="/terms-of-use">Terms of use</a>
+          <Spacer height={{ mobile: "38px", tablet: 0 }} />
+          <Box display={{ mobile: "none", tablet: "flex" }}>
+            <Spacer width="32px" />
+            <Text typography="paragraph0" color="primary">
+              |
+            </Text>
+            <Spacer width="32px" />
+          </Box>
         </Box>
-        <Box>
+        <Box display="flex" alignItems="flex-end">
+          <Spacer height={{ mobile: "38px", tablet: 0 }} />
           <a
             href="https://forms.gle/nDFm7oMuTZhJGPe66"
             target="_blank"
@@ -41,7 +58,7 @@ export const Footer: React.FC = () => {
             Contact Us
           </a>
         </Box>
-      </Stack>
+      </Box>
     </Box>
   );
 };
