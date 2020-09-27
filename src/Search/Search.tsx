@@ -26,7 +26,7 @@ const Search: React.FC = () => {
         flexDirection="column"
         justifyContent="center"
         alignItems="stretch"
-        padding={{ mobile: "32px", tablet: "64px" }}
+        padding={{ mobile: "32px", tablet: "32px", desktop: "64px" }}
         onSubmit={(e) => {
           // Add onSubmit handler so users can hit enter to submit form
           e.preventDefault();

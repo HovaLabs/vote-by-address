@@ -4,27 +4,23 @@ import { Text, Grid } from "../design-system";
 import TableRow from "./TableRow";
 import { TableType } from "./TableTypes";
 
-const Table: React.FC<TableType> = ({ rows, columns, title }) => {
+const Table: React.FC<TableType> = ({ data, rows, columns, title }) => {
   const columnsPrintout = columns.map((column) => {
     const { name } = column;
     return (
-      <Text as="h5" padding="20px" typography="paragraphBold1">
+      <Text as="h5" padding="20px 20px 20px 0" typography="paragraphBold1">
         {name}
       </Text>
     );
   });
 
   const rowsPrintout = rows.map((row) => {
-    return <TableRow row={row} columns={columns} />;
+    return <TableRow data={data} row={row} columns={columns} />;
   });
 
   return (
     <S.ContainerTable>
-      <Text
-        as="h5"
-        padding={{ mobile: "20px 0", tablet: "20px" }}
-        typography="heading5"
-      >
+      <Text as="h5" padding={"20px 20px 20px 0"} typography="heading5">
         {title}
       </Text>
       <Grid

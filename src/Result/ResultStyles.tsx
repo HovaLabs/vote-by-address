@@ -21,5 +21,8 @@ export const BackLink = styled.button`
 `;
 
 export const ContainerLocation = styled.div`
-  padding: 38px;
+  padding: 32px;
+  @media only screen and (min-width: ${(p) => p.theme.breakpoints.desktop}) {
+    padding: 64px;
+  }
 `;

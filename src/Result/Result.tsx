@@ -14,8 +14,10 @@ const Result: React.FC = () => {
   const {
     data,
     loading,
-    columnsPollingLocations,
-    rowsPollingLocations,
+    columnsEarlyVoteSites,
+    rowsEarlyVoteSites,
+    columnsDropOffLocations,
+    rowsDropOffLocations,
     columnsStateInfo,
     rowsStateInfo,
   } = useGetData(address || "");
@@ -44,6 +46,7 @@ const Result: React.FC = () => {
       >
         {`${line1Formatted} ${city}, ${state} ${zip}`}
       </Text>
+      <Spacer height="32px"></Spacer>
       <Text as="p" typography="paragraph0">
         <strong>Election Day:</strong> {formatDate(electionDay)}
       </Text>
@@ -68,17 +71,37 @@ const Result: React.FC = () => {
       {data.state && (
         <Table
           columns={columnsStateInfo}
+          data={data.state}
           rows={rowsStateInfo}
           title={`Official ${data.state[0].name} State Voting Information`}
         />
       )}
-      {data.pollingLocations && (
+      {data.earlyVoteSites && (
         <Table
-          columns={columnsPollingLocations}
-          rows={rowsPollingLocations}
-          title="Your Polling Locations"
+          columns={columnsEarlyVoteSites}
+          data={data.earlyVoteSites}
+          rows={rowsEarlyVoteSites}
+          title="Your Early Vote Locations"
         />
       )}
+      {data.dropOffLocations && (
+        <Table
+          columns={columnsDropOffLocations}
+          data={data.dropOffLocations}
+          rows={rowsDropOffLocations}
+          title="Your Ballot Drop Box Locations"
+        />
+      )}
+      <Spacer height={64} />
+      <Box padding={{ mobile: 32, tablet: 32, desktop: 64 }}>
+        <Text typography="paragraph0">
+          Want to know if/when more data is coming? Check out{" "}
+          <a href="https://docs.google.com/spreadsheets/d/17sOYnw7VGg-1LVCKplvqc38HOpYdoKT0wPyWcMRoKSg/edit#gid=0">
+            this official spreadsheet
+          </a>
+          !
+        </Text>
+      </Box>
       <Footer />
     </Box>
   );

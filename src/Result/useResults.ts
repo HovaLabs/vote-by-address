@@ -28,9 +28,12 @@ type DropOffLocation = {
 
 type EarlyVoteSite = {
   address: Address;
+  startDate: string;
+  endDate: string;
   latitude: string;
   longitude: string;
   notes: string;
+  pollingHours: string;
   sources: Source[];
 };
 
@@ -84,6 +87,16 @@ type RequestData = {
   }[];
 } | null;
 
+type DropOffLocations = {
+  columnsDropOffLocations: { width: string; name: string }[];
+  rowsDropOffLocations: string[][];
+};
+
+type EarlyVoteSites = {
+  columnsEarlyVoteSites: { width: string; name: string }[];
+  rowsEarlyVoteSites: string[][];
+};
+
 type PollingLocations = {
   columnsPollingLocations: { width: string; name: string }[];
   rowsPollingLocations: string[][];
@@ -100,8 +113,10 @@ const GOOGLE_CIVIC_INFO_URL =
 // used to get the initial list of tables and handles all top level tables logic
 export const useGetData = (
   address: string
-): PollingLocations &
-  StateInfo & {
+): DropOffLocations &
+  PollingLocations &
+  StateInfo &
+  EarlyVoteSites & {
     data: RequestData;
     loading: boolean;
     error: string | void;
@@ -160,6 +175,12 @@ export const useGetData = (
     doTheThing();
   }, [address, history]);
 
+  const { columnsDropOffLocations, rowsDropOffLocations } = getDropOffLocations(
+    data
+  );
+
+  const { columnsEarlyVoteSites, rowsEarlyVoteSites } = getEarlyVoteSites(data);
+
   const { columnsPollingLocations, rowsPollingLocations } = getPollingLocations(
     data
   );
@@ -169,11 +190,83 @@ export const useGetData = (
     data,
     error,
     loading,
+    columnsDropOffLocations,
+    rowsDropOffLocations,
+    columnsEarlyVoteSites,
+    rowsEarlyVoteSites,
     columnsPollingLocations,
     rowsPollingLocations,
     columnsStateInfo,
     rowsStateInfo,
   };
+};
+
+export const getDropOffLocations = (data: RequestData): DropOffLocations => {
+  // Bail if no data
+  if (data == null || data.dropOffLocations == null) {
+    return { columnsDropOffLocations: [], rowsDropOffLocations: [] };
+  }
+  const { dropOffLocations } = data;
+
+  const columnsDropOffLocations: { width: string; name: string }[] = [
+    { width: "2fr", name: "ADDRESS" },
+    { width: "2fr", name: "START DATE" },
+    { width: "2fr", name: "END DATE" },
+    { width: "2fr", name: "POLLING HOURS" },
+    { width: "2fr", name: "NOTES" },
+    { width: "2fr", name: "SOURCES" },
+  ];
+
+  const rowsDropOffLocations: string[][] = dropOffLocations.map((location) => {
+    const sources = location.sources
+      .map((source: { name: string; official: boolean }) => {
+        return source.name;
+      })
+      .join(", ");
+    return [
+      Object.values(location.address).join(" "),
+      formatDate(location.startDate),
+      formatDate(location.endDate),
+      location.pollingHours,
+      location.notes,
+      sources,
+    ];
+  });
+
+  return { columnsDropOffLocations, rowsDropOffLocations };
+};
+
+export const getEarlyVoteSites = (data: RequestData): EarlyVoteSites => {
+  // Bail if no data
+  if (data == null || data.earlyVoteSites == null) {
+    return { columnsEarlyVoteSites: [], rowsEarlyVoteSites: [] };
+  }
+  const { earlyVoteSites } = data;
+
+  const columnsEarlyVoteSites: { width: string; name: string }[] = [
+    { width: "3fr", name: "ADDRESS" },
+    { width: "2fr", name: "START DATE" },
+    { width: "2fr", name: "END DATE" },
+    { width: "3fr", name: "POLLING HOURS" },
+    { width: "2fr", name: "SOURCES" },
+  ];
+
+  const rowsEarlyVoteSites: string[][] = earlyVoteSites.map((location) => {
+    const sources = location.sources
+      .map((source: { name: string; official: boolean }) => {
+        return source.name;
+      })
+      .join(", ");
+    return [
+      Object.values(location.address).join(" "),
+      formatDate(location.startDate),
+      formatDate(location.endDate),
+      location.pollingHours,
+      sources,
+    ];
+  });
+
+  return { columnsEarlyVoteSites, rowsEarlyVoteSites };
 };
 
 export const getPollingLocations = (data: RequestData): PollingLocations => {
@@ -245,7 +338,10 @@ export const getStateInfo = (data: RequestData): StateInfo => {
   return { columnsStateInfo, rowsStateInfo };
 };
 
-export const formatDate = (date: string): string => {
+export const formatDate = (date: string | undefined): string => {
+  if (date === undefined) {
+    return "";
+  }
   const d = new Date(date.replace(/-/g, "/"));
   const ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(d);
   const mo = new Intl.DateTimeFormat("en", { month: "long" }).format(d);
