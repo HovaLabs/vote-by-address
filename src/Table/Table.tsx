@@ -20,7 +20,11 @@ const Table: React.FC<TableType> = ({ rows, columns, title }) => {
 
   return (
     <S.ContainerTable>
-      <Text as="h5" padding="20px" typography="heading5">
+      <Text
+        as="h5"
+        padding={{ mobile: "20px 0", tablet: "20px" }}
+        typography="heading5"
+      >
         {title}
       </Text>
       <Grid
