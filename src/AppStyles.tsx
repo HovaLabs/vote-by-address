@@ -7,5 +7,6 @@ export const ContainerOuter = styled.div(
     box-sizing: border-box;
     border: none;
     color: ${p.theme.colors.onSurface};
+    height: 100%;
   `
 );

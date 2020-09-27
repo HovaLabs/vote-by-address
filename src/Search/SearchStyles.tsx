@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { Box, BoxProps, styled } from "../design-system";
 
 export const ContainerInput = styled.div`
   align-items: center;
@@ -23,9 +23,26 @@ export const Input = styled.input(
 );
 
 export const ContainerOuter = styled.div`
-  padding: 0 64px 64px 64px;
   align-items: center;
   display: flex;
+  flex-direction: column;
   height: 100vh;
   box-sizing: border-box;
+  position: relative;
 `;
+
+export const Google = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: left;
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  img {
+    padding-top: 12px;
+  }
+`;
+
+export const Form = styled(Box).attrs({ as: "form" })<BoxProps>``;

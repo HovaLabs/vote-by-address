@@ -1,26 +1,66 @@
 import React from "react";
 import * as S from "./FooterStyles";
-import google from "./media/google.svg";
-import { Text } from "../design-system";
+import { Box, Text, Spacer, Stack } from "../design-system";
 import logo from "./media/logo.svg";
 
-const Footer: React.FC = () => {
+export const Footer: React.FC = () => {
   return (
-    <S.OuterContainer>
-      <S.Logo href="https://www.hovalabs.com/" target="_blank">
-        <img alt="logo" src={logo} />
-        {/* @ts-ignore */}
-        <Text as="p" typography="paragraph1">
-          Powered by Hova Labs
-        </Text>
-      </S.Logo>
-      <S.Google>
-        <a href="https://developers.google.com/civic-information">
-          <img alt="google-logo" src={google} />
-        </a>
-      </S.Google>
-    </S.OuterContainer>
+    <Box
+      display="flex"
+      width="100%"
+      flex="none"
+      padding={{ mobile: "32px", tablet: "64px" }}
+      alignItems={{ mobile: "flex-start", tablet: "flex-end" }}
+      justifyContent={{ mobile: "flex-end", tablet: "space-between" }}
+      marginTop="auto"
+      flexDirection={{ mobile: "column", tablet: "row" }}
+      flexWrap="wrap"
+      position="relative"
+      zIndex={1}
+    >
+      <Stack flexDirection="column" space="32px">
+        <S.Logo href="https://www.hovalabs.com/" target="_blank">
+          <img alt="logo" src={logo} />
+          <Text as="p" typography="paragraph1">
+            Powered by Hova Labs
+          </Text>
+          <Spacer width="32px" />
+        </S.Logo>
+      </Stack>
+      <Box display="flex" flexDirection={{ mobile: "column", tablet: "row" }}>
+        <Spacer height={{ mobile: "32px", tablet: "64px" }} />
+        <Box display="flex" alignItems="flex-end">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <Box display={{ mobile: "none", tablet: "flex" }}>
+            <Spacer width="32px" />
+            <Text typography="paragraph0" color="primary">
+              |
+            </Text>
+            <Spacer width="32px" />
+          </Box>
+        </Box>
+        <Box display="flex" alignItems="flex-end">
+          <a href="/terms-of-use">Terms of use</a>
+          <Spacer height={{ mobile: "38px", tablet: 0 }} />
+          <Box display={{ mobile: "none", tablet: "flex" }}>
+            <Spacer width="32px" />
+            <Text typography="paragraph0" color="primary">
+              |
+            </Text>
+            <Spacer width="32px" />
+          </Box>
+        </Box>
+        <Box display="flex" alignItems="flex-end">
+          <Spacer height={{ mobile: "38px", tablet: 0 }} />
+          <a
+            href="https://forms.gle/nDFm7oMuTZhJGPe66"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contact Us
+          </a>
+        </Box>
+      </Box>
+    </Box>
   );
 };
-
-export default Footer;

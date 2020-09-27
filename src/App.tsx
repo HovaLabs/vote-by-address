@@ -7,6 +7,8 @@ import * as S from "./AppStyles";
 import { DesignSystemProvider } from "./design-system";
 import { AnalyticsProvider } from "./Analytics";
 import { AnalyticsConsent } from "./AnalyticsConsent";
+import { PrivacyPolicy } from "./PrivacyPolicy";
+import { TermsOfUse } from "./TermsOfUse";
 
 const App: React.FC = () => {
   return (
@@ -16,6 +18,12 @@ const App: React.FC = () => {
           <Switch>
             <Route path="/result/:address">
               <Result />
+            </Route>
+            <Route path="/privacy-policy">
+              <PrivacyPolicy />
+            </Route>
+            <Route path="/terms-of-use">
+              <TermsOfUse />
             </Route>
             <Route path="/">
               <Search />
