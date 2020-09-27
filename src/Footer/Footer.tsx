@@ -15,6 +15,8 @@ export const Footer: React.FC = () => {
       marginTop="auto"
       flexDirection={{ mobile: "column", tablet: "row" }}
       flexWrap="wrap"
+      position="relative"
+      zIndex={1}
     >
       <Stack flexDirection="column" space="32px">
         <S.Logo href="https://www.hovalabs.com/" target="_blank">
