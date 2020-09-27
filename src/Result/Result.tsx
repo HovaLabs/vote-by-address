@@ -46,6 +46,7 @@ const Result: React.FC = () => {
       >
         {`${line1Formatted} ${city}, ${state} ${zip}`}
       </Text>
+      <Spacer height="32px"></Spacer>
       <Text as="p" typography="paragraph0">
         <strong>Election Day:</strong> {formatDate(electionDay)}
       </Text>
