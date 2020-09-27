@@ -16,6 +16,7 @@ export const Footer = styled.div`
 export const Links = styled.div`
   align-self: flex-end;
   & > a {
+    ${(p) => p.theme.typography.paragraph2}
     padding-left: 32px;
   }
   @media only screen and (max-width: ${(p) => p.theme.breakpoints.desktop}) {
