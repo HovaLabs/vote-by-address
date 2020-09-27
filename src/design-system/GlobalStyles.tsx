@@ -38,4 +38,8 @@ a:hover {
 a:active {
   text-decoration: none;
 } 
+
+ul{
+  margin-inline-start: 20px;
+}
 `;
