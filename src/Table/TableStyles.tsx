@@ -27,6 +27,7 @@ export const Line = styled.div`
   background: #fff;
   height: 6px;
   width: 100%;
+  margin-top: 32px;
 `;
 
 export const Value = styled.p``;
