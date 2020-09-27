@@ -3,7 +3,7 @@ import * as S from "./TableStyles";
 import { Box, Spacer, Text } from "../design-system";
 
 import { ColumnsType, RowType } from "./TableTypes";
-import { getIsLink } from "./TableUtils";
+import { getDateInfo, getIsLink } from "./TableUtils";
 
 const TableRow: React.FC<{ row: RowType; columns: ColumnsType }> = ({
   row,
@@ -48,13 +48,31 @@ const TableRow: React.FC<{ row: RowType; columns: ColumnsType }> = ({
       if (["POLLING HOURS"].includes(columns[index].name)) {
         const stringArray = item.split(/\r?\n/);
         const printOut = stringArray.map((day) => {
-          return (
-            <>
-              <span>{day}</span>
-              <Spacer height={12} />
-            </>
-          );
+          const { isInFuture, isToday, isInPast } = getDateInfo(day);
+          const dayPrintout = () => {
+            if (isInPast) {
+              return <></>;
+            }
+            if (isToday) {
+              return (
+                <S.DateToday>
+                  {day}
+                  <Spacer height={12} />
+                </S.DateToday>
+              );
+            }
+            if (isInFuture) {
+              return (
+                <>
+                  {day}
+                  <Spacer height={12} />
+                </>
+              );
+            }
+          };
+          return dayPrintout();
         });
+        debugger;
         return (
           <Box backgroundColor="surface" padding="20px">
             {title}

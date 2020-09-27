@@ -23,6 +23,11 @@ export const EmptyValue = styled.div`
   height: 100%;
 `;
 
+export const DateToday = styled.span`
+  background: ${(p) => p.theme.colors.primary};
+  color: ${(p) => p.theme.colors.background};
+`;
+
 export const Line = styled.div`
   display: flex;
   background: #fff;
