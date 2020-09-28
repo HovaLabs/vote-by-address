@@ -43,4 +43,12 @@ export const Line = styled.div`
   margin-top: 32px;
 `;
 
+export const TableSpacer = styled.div`
+  display: block;
+  height: 32px;
+  @media only screen and (min-width: ${(p) => p.theme.breakpoints.desktop}) {
+    display: none;
+  }
+`;
+
 export const Value = styled.p``;

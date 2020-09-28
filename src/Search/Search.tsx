@@ -63,7 +63,11 @@ const Search: React.FC = () => {
         <S.Google>
           Data courtesy of:
           <Spacer width={12} />
-          <a href="https://developers.google.com/civic-information">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://developers.google.com/civic-information"
+          >
             <img alt="google-logo" src={google} />
           </a>
         </S.Google>

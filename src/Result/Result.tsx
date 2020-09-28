@@ -18,6 +18,8 @@ const Result: React.FC = () => {
     rowsEarlyVoteSites,
     columnsDropOffLocations,
     rowsDropOffLocations,
+    columnsPollingLocations,
+    rowsPollingLocations,
     columnsStateInfo,
     rowsStateInfo,
   } = useGetData(address || "");
@@ -90,6 +92,14 @@ const Result: React.FC = () => {
           data={data.dropOffLocations}
           rows={rowsDropOffLocations}
           title="Your Ballot Drop Box Locations"
+        />
+      )}
+      {data.pollingLocations && (
+        <Table
+          columns={columnsPollingLocations}
+          data={data.pollingLocations}
+          rows={rowsPollingLocations}
+          title="Your Polling Locations"
         />
       )}
       <Spacer height={64} />
