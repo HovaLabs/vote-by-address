@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const ContainerTable = styled.div`
-  padding: 32px;
+  padding: 0px 32px 32px 32px;
   width: 100%;
   @media only screen and (min-width: ${(p) => p.theme.breakpoints.desktop}) {
-    padding: 64px;
+    padding: 0 64px 64px 64px;
   }
 `;
 
