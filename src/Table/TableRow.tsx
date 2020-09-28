@@ -4,7 +4,6 @@ import { Box, Spacer, Text } from "../design-system";
 
 import { ColumnsType, RowType } from "./TableTypes";
 import { getDateInfo, getIsLink } from "./TableUtils";
-import { url } from "inspector";
 
 const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
   data,
