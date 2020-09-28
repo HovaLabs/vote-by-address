@@ -300,7 +300,7 @@ export const getPollingLocations = (data: RequestData): PollingLocations => {
         return source.name;
       })
       .join(", ");
-    debugger;
+
     return [
       Object.values(location.address).join(" "),
       location.startDate,

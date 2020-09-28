@@ -33,12 +33,17 @@ const Search: React.FC = () => {
           history.push(`/result/${address}`);
         }}
       >
-        <Text as="h1" typography={{ mobile: "heading4", tablet: "heading0" }}>
+        <Text
+          id="label"
+          as="label"
+          typography={{ mobile: "heading4", tablet: "heading0" }}
+        >
           <strong>Enter your address</strong> to get local election info:
         </Text>
 
         <S.ContainerInput>
           <S.Input
+            aria-labelledby="label"
             onChange={(event) => {
               setAddress(event.target.value);
             }}

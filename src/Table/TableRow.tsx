@@ -23,7 +23,7 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
     // If there is no data available for an item
     if (item === undefined || item === "") {
       return (
-        <Box backgroundColor="surface" padding="20px">
+        <Box key={item} backgroundColor="surface" padding="20px">
           {title}
           <S.EmptyValue>
             <S.Line />
@@ -35,7 +35,7 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
       const isLink = getIsLink(item);
       if (isLink) {
         return (
-          <Box backgroundColor="surface" padding="20px">
+          <Box key={item} backgroundColor="surface" padding="20px">
             {title}
             <a href={item} target="_blank" rel="noopener noreferrer">
               <Text as="p" typography="paragraph0" wordBreak="break-word">
@@ -55,7 +55,7 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
             break;
         }
         return url ? (
-          <Box backgroundColor="surface" padding="20px">
+          <Box key={item} backgroundColor="surface" padding="20px">
             {title}
             <a href={url} rel="noopener noreferrer">
               {item}
@@ -69,7 +69,7 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
         const { latitude, longitude } = data[index];
         const { line1, line2, locationName, state, zip } = data[index].address;
         return (
-          <Box backgroundColor="surface" padding="20px">
+          <Box key={item} backgroundColor="surface" padding="20px">
             {title}
             <a
               rel="noopener noreferrer"
@@ -121,14 +121,14 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
           return dayPrintout();
         });
         return (
-          <Box backgroundColor="surface" padding="20px">
+          <Box key={item} backgroundColor="surface" padding="20px">
             {title}
             {printOut}
           </Box>
         );
       }
       return (
-        <Box backgroundColor="surface" padding="20px">
+        <Box key={item} backgroundColor="surface" padding="20px">
           {title}
           <Text as="p" typography="paragraph0" wordBreak="break-word">
             {item}
