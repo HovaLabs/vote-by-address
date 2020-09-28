@@ -18,6 +18,8 @@ const Result: React.FC = () => {
     rowsEarlyVoteSites,
     columnsDropOffLocations,
     rowsDropOffLocations,
+    columnsPollingLocations,
+    rowsPollingLocations,
     columnsStateInfo,
     rowsStateInfo,
   } = useGetData(address || "");
@@ -44,7 +46,7 @@ const Result: React.FC = () => {
         display="inline"
         typography="headingBold0"
       >
-        {`${line1Formatted} ${city}, ${state} ${zip}`}
+        {`${line1Formatted} ${city} ${state} ${zip}`}
       </Text>
       <Spacer height="32px"></Spacer>
       <Text as="p" typography="paragraph0">
@@ -92,12 +94,25 @@ const Result: React.FC = () => {
           title="Your Ballot Drop Box Locations"
         />
       )}
+      {data.pollingLocations && (
+        <Table
+          columns={columnsPollingLocations}
+          data={data.pollingLocations}
+          rows={rowsPollingLocations}
+          title="Your Polling Locations"
+        />
+      )}
       <Spacer height={64} />
       <Box padding={{ mobile: 32, tablet: 32, desktop: 64 }}>
         <Text typography="paragraph0">
-          Want to know if/when more data is coming? Check out{" "}
-          <a href="https://docs.google.com/spreadsheets/d/17sOYnw7VGg-1LVCKplvqc38HOpYdoKT0wPyWcMRoKSg/edit#gid=0">
-            this official spreadsheet
+          {`Want to know if/when more data is coming for ${data.state[0].name}?`}{" "}
+          Check out{" "}
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://docs.google.com/spreadsheets/d/17sOYnw7VGg-1LVCKplvqc38HOpYdoKT0wPyWcMRoKSg/edit#gid=0"
+          >
+            this official Google Civic API spreadsheet
           </a>
           !
         </Text>
