@@ -97,7 +97,11 @@ const Result: React.FC = () => {
         <Text typography="paragraph0">
           {`Want to know if/when more data is coming for ${data.state[0].name}?`}{" "}
           Check out{" "}
-          <a href="https://docs.google.com/spreadsheets/d/17sOYnw7VGg-1LVCKplvqc38HOpYdoKT0wPyWcMRoKSg/edit#gid=0">
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://docs.google.com/spreadsheets/d/17sOYnw7VGg-1LVCKplvqc38HOpYdoKT0wPyWcMRoKSg/edit#gid=0"
+          >
             this official Google Civic API spreadsheet
           </a>
           !
