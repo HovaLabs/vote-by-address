@@ -44,7 +44,7 @@ const Result: React.FC = () => {
         display="inline"
         typography="headingBold0"
       >
-        {`${line1Formatted} ${city}, ${state} ${zip}`}
+        {`${line1Formatted} ${city} ${state} ${zip}`}
       </Text>
       <Spacer height="32px"></Spacer>
       <Text as="p" typography="paragraph0">

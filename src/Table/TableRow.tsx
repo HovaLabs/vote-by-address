@@ -4,6 +4,7 @@ import { Box, Spacer, Text } from "../design-system";
 
 import { ColumnsType, RowType } from "./TableTypes";
 import { getDateInfo, getIsLink } from "./TableUtils";
+import { url } from "inspector";
 
 const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
   data,
@@ -20,7 +21,6 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
         {columns[index].name}
       </Text>
     );
-
     // If there is no data available for an item
     if (item === undefined || item === "") {
       return (
@@ -44,6 +44,25 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
               </Text>
             </a>
           </Box>
+        );
+      }
+      if (["SOURCES"].includes(columns[index].name)) {
+        let url = null;
+        switch (item) {
+          case "Voting Information Project":
+            url = "https://www.votinginfoproject.org/";
+            break;
+          default:
+            break;
+        }
+        return url ? (
+          <Box backgroundColor="surface" padding="20px">
+            <a href={url} rel="noopener noreferrer">
+              {item}
+            </a>
+          </Box>
+        ) : (
+          item
         );
       }
       if (["ADDRESS"].includes(columns[index].name)) {
