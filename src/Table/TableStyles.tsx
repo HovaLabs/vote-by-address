@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const ContainerTable = styled.div`
-  padding: 32px;
+  padding: 0px 32px 32px 32px;
   width: 100%;
   @media only screen and (min-width: ${(p) => p.theme.breakpoints.desktop}) {
-    padding: 64px;
+    padding: 0 64px 64px 64px;
   }
 `;
 
@@ -41,6 +41,14 @@ export const Line = styled.div`
   height: 6px;
   width: 100%;
   margin-top: 32px;
+`;
+
+export const TableSpacer = styled.div`
+  display: block;
+  height: 32px;
+  @media only screen and (min-width: ${(p) => p.theme.breakpoints.desktop}) {
+    display: none;
+  }
 `;
 
 export const Value = styled.p``;

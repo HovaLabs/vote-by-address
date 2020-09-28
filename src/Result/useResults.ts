@@ -41,6 +41,13 @@ type Location = {
   address: Address;
   sources: Source[];
   pollingHours: string;
+  notes: string;
+  voterServices: string;
+  name: string;
+  startDate: string;
+  endDate: string;
+  latitude: string;
+  longitude: string;
 };
 
 type RequestData = {
@@ -244,10 +251,11 @@ export const getEarlyVoteSites = (data: RequestData): EarlyVoteSites => {
   const { earlyVoteSites } = data;
 
   const columnsEarlyVoteSites: { width: string; name: string }[] = [
-    { width: "3fr", name: "ADDRESS" },
+    { width: "2fr", name: "ADDRESS" },
     { width: "2fr", name: "START DATE" },
     { width: "2fr", name: "END DATE" },
-    { width: "3fr", name: "POLLING HOURS" },
+    { width: "2fr", name: "POLLING HOURS" },
+    { width: "2fr", name: "NOTES" },
     { width: "2fr", name: "SOURCES" },
   ];
 
@@ -262,6 +270,7 @@ export const getEarlyVoteSites = (data: RequestData): EarlyVoteSites => {
       formatDate(location.startDate),
       formatDate(location.endDate),
       location.pollingHours,
+      location.notes,
       sources,
     ];
   });
@@ -277,9 +286,12 @@ export const getPollingLocations = (data: RequestData): PollingLocations => {
   const { pollingLocations } = data;
 
   const columnsPollingLocations: { width: string; name: string }[] = [
-    { width: "4fr", name: "ADDRESS" },
-    { width: "3fr", name: "POLLING HOURS" },
-    { width: "3fr", name: "SOURCES" },
+    { width: "2fr", name: "ADDRESS" },
+    { width: "2fr", name: "START DATE" },
+    { width: "2fr", name: "END DATE" },
+    { width: "2fr", name: "POLLING HOURS" },
+    { width: "2fr", name: "NOTES" },
+    { width: "2fr", name: "SOURCES" },
   ];
 
   const rowsPollingLocations: string[][] = pollingLocations.map((location) => {
@@ -288,9 +300,13 @@ export const getPollingLocations = (data: RequestData): PollingLocations => {
         return source.name;
       })
       .join(", ");
+    debugger;
     return [
       Object.values(location.address).join(" "),
+      location.startDate,
+      location.endDate,
       location.pollingHours,
+      location.notes,
       sources,
     ];
   });
