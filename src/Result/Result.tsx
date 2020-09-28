@@ -95,9 +95,10 @@ const Result: React.FC = () => {
       <Spacer height={64} />
       <Box padding={{ mobile: 32, tablet: 32, desktop: 64 }}>
         <Text typography="paragraph0">
-          Want to know if/when more data is coming? Check out{" "}
+          {`Want to know if/when more data is coming for ${data.state[0].name}?`}{" "}
+          Check out{" "}
           <a href="https://docs.google.com/spreadsheets/d/17sOYnw7VGg-1LVCKplvqc38HOpYdoKT0wPyWcMRoKSg/edit#gid=0">
-            this official spreadsheet
+            this official Google Civic API spreadsheet
           </a>
           !
         </Text>
