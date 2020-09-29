@@ -38,7 +38,7 @@ const Search: React.FC = () => {
           as="label"
           typography={{ mobile: "heading4", tablet: "heading0" }}
         >
-          <strong>Enter your address</strong> to get local election info:
+          <strong>Enter your full address</strong> to get local election info:
         </Text>
 
         <S.ContainerInput>
