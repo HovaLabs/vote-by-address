@@ -57,7 +57,7 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
         return url ? (
           <Box key={item} backgroundColor="surface" padding="20px">
             {title}
-            <a href={url} rel="noopener noreferrer">
+            <a href={url} target="_blank" rel="noopener noreferrer">
               {item}
             </a>
           </Box>
