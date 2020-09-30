@@ -100,6 +100,7 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
             backgroundColor="surface"
             padding="20px"
           >
+            {title}
             <div
               dangerouslySetInnerHTML={{
                 __html: urlify(item),
