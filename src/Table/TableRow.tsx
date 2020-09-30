@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./TableStyles";
 import { Box, Spacer, Text } from "../design-system";
-
+import Linkify from "react-linkify";
 import { ColumnsType, RowType } from "./TableTypes";
 import { getDateInfo, getIsLink } from "./TableUtils";
 
@@ -23,7 +23,13 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
     // If there is no data available for an item
     if (item === undefined || item === "") {
       return (
-        <Box key={item} backgroundColor="surface" padding="20px">
+        <Box
+          minHeight={0}
+          minWidth={0}
+          key={item}
+          backgroundColor="surface"
+          padding="20px"
+        >
           {title}
           N/A
         </Box>
@@ -32,7 +38,13 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
       const isLink = getIsLink(item);
       if (isLink) {
         return (
-          <Box key={item} backgroundColor="surface" padding="20px">
+          <Box
+            minHeight={0}
+            minWidth={0}
+            key={item}
+            backgroundColor="surface"
+            padding="20px"
+          >
             {title}
             <a href={item} target="_blank" rel="noopener noreferrer">
               <Text as="p" typography="paragraph0" wordBreak="break-word">
@@ -55,16 +67,43 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
             break;
         }
         return url ? (
-          <Box key={item} backgroundColor="surface" padding="20px">
+          <Box
+            minHeight={0}
+            minWidth={0}
+            key={item}
+            backgroundColor="surface"
+            padding="20px"
+          >
             {title}
             <a href={url} target="_blank" rel="noopener noreferrer">
               {item}
             </a>
           </Box>
         ) : (
-          <Box key={item} backgroundColor="surface" padding="20px">
+          <Box
+            minHeight={0}
+            minWidth={0}
+            key={item}
+            backgroundColor="surface"
+            padding="20px"
+          >
             {title}
             {item}
+          </Box>
+        );
+      }
+      if (["NOTES"].includes(columns[index].name)) {
+        return (
+          <Box
+            minHeight={0}
+            minWidth={0}
+            key={item}
+            backgroundColor="surface"
+            padding="20px"
+          >
+            <div>
+              <Linkify>{item}</Linkify>
+            </div>
           </Box>
         );
       }
@@ -72,7 +111,13 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
         const { latitude, longitude } = data[index];
         const { line1, line2, locationName, state, zip } = data[index].address;
         return (
-          <Box key={item} backgroundColor="surface" padding="20px">
+          <Box
+            minHeight={0}
+            minWidth={0}
+            key={item}
+            backgroundColor="surface"
+            padding="20px"
+          >
             {title}
             <a
               rel="noopener noreferrer"
@@ -124,14 +169,26 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
           return dayPrintout();
         });
         return (
-          <Box key={item} backgroundColor="surface" padding="20px">
+          <Box
+            minHeight={0}
+            minWidth={0}
+            key={item}
+            backgroundColor="surface"
+            padding="20px"
+          >
             {title}
             {printOut}
           </Box>
         );
       }
       return (
-        <Box key={item} backgroundColor="surface" padding="20px">
+        <Box
+          minHeight={0}
+          minWidth={0}
+          key={item}
+          backgroundColor="surface"
+          padding="20px"
+        >
           {title}
           <Text as="p" typography="paragraph0" wordBreak="break-word">
             {item}
