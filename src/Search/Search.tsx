@@ -76,6 +76,13 @@ const Search: React.FC = () => {
             <img alt="google-logo" src={google} />
           </a>
         </S.Google>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://developers.google.com/civic-information"
+        >
+          "Learn more"
+        </a>
       </S.Form>
       <Footer />
     </S.ContainerOuter>
