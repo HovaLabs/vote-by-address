@@ -27,3 +27,16 @@ export const getDateInfo = (
     isInFuture: formattedDate > today,
   };
 };
+
+export const urlify = (text: string): any => {
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  return text.replace(urlRegex, function (url) {
+    return (
+      '<a rel="noopener noreferrer" target="_blank" href="' +
+      url +
+      '">' +
+      url +
+      "</a>"
+    );
+  });
+};

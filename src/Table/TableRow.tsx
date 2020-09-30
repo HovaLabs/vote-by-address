@@ -1,9 +1,8 @@
 import React from "react";
 import * as S from "./TableStyles";
 import { Box, Spacer, Text } from "../design-system";
-
 import { ColumnsType, RowType } from "./TableTypes";
-import { getDateInfo, getIsLink } from "./TableUtils";
+import { getDateInfo, getIsLink, urlify } from "./TableUtils";
 
 const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
   data,
@@ -23,19 +22,28 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
     // If there is no data available for an item
     if (item === undefined || item === "") {
       return (
-        <Box key={item} backgroundColor="surface" padding="20px">
+        <Box
+          minHeight={0}
+          minWidth={0}
+          key={item}
+          backgroundColor="surface"
+          padding="20px"
+        >
           {title}
-          <S.EmptyValue>
-            <S.Line />
-            <Spacer width={20} />
-          </S.EmptyValue>
+          N/A
         </Box>
       );
     } else {
       const isLink = getIsLink(item);
       if (isLink) {
         return (
-          <Box key={item} backgroundColor="surface" padding="20px">
+          <Box
+            minHeight={0}
+            minWidth={0}
+            key={item}
+            backgroundColor="surface"
+            padding="20px"
+          >
             {title}
             <a href={item} target="_blank" rel="noopener noreferrer">
               <Text as="p" typography="paragraph0" wordBreak="break-word">
@@ -51,25 +59,67 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
           case "Voting Information Project":
             url = "https://www.votinginfoproject.org/";
             break;
+          case "DemocracyWorks":
+            url = "https://www.democracy.works/";
+            break;
           default:
             break;
         }
         return url ? (
-          <Box key={item} backgroundColor="surface" padding="20px">
+          <Box
+            minHeight={0}
+            minWidth={0}
+            key={item}
+            backgroundColor="surface"
+            padding="20px"
+          >
             {title}
             <a href={url} target="_blank" rel="noopener noreferrer">
               {item}
             </a>
           </Box>
         ) : (
-          item
+          <Box
+            minHeight={0}
+            minWidth={0}
+            key={item}
+            backgroundColor="surface"
+            padding="20px"
+          >
+            {title}
+            {item}
+          </Box>
+        );
+      }
+      if (["NOTES"].includes(columns[index].name)) {
+        return (
+          <Box
+            minHeight={0}
+            minWidth={0}
+            key={item}
+            backgroundColor="surface"
+            padding="20px"
+          >
+            {title}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: urlify(item),
+              }}
+            />
+          </Box>
         );
       }
       if (["ADDRESS"].includes(columns[index].name)) {
         const { latitude, longitude } = data[index];
         const { line1, line2, locationName, state, zip } = data[index].address;
         return (
-          <Box key={item} backgroundColor="surface" padding="20px">
+          <Box
+            minHeight={0}
+            minWidth={0}
+            key={item}
+            backgroundColor="surface"
+            padding="20px"
+          >
             {title}
             <a
               rel="noopener noreferrer"
@@ -121,14 +171,26 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
           return dayPrintout();
         });
         return (
-          <Box key={item} backgroundColor="surface" padding="20px">
+          <Box
+            minHeight={0}
+            minWidth={0}
+            key={item}
+            backgroundColor="surface"
+            padding="20px"
+          >
             {title}
             {printOut}
           </Box>
         );
       }
       return (
-        <Box key={item} backgroundColor="surface" padding="20px">
+        <Box
+          minHeight={0}
+          minWidth={0}
+          key={item}
+          backgroundColor="surface"
+          padding="20px"
+        >
           {title}
           <Text as="p" typography="paragraph0" wordBreak="break-word">
             {item}
