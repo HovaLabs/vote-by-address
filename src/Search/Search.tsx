@@ -81,7 +81,7 @@ const Search: React.FC = () => {
           rel="noopener noreferrer"
           href="https://developers.google.com/civic-information"
         >
-          "Learn more"
+          Learn more
         </a>
       </S.Form>
       <Footer />
