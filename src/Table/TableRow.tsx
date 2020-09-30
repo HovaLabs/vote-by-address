@@ -1,9 +1,8 @@
 import React from "react";
 import * as S from "./TableStyles";
 import { Box, Spacer, Text } from "../design-system";
-import Linkify from "react-linkify";
 import { ColumnsType, RowType } from "./TableTypes";
-import { getDateInfo, getIsLink } from "./TableUtils";
+import { getDateInfo, getIsLink, urlify } from "./TableUtils";
 
 const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
   data,
@@ -101,9 +100,11 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
             backgroundColor="surface"
             padding="20px"
           >
-            <div>
-              <Linkify>{item}</Linkify>
-            </div>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: urlify(item),
+              }}
+            />
           </Box>
         );
       }
