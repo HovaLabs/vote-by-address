@@ -52,7 +52,6 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
             url = "https://www.democracy.works/";
             break;
           default:
-            url = "";
             break;
         }
         return url ? (
@@ -63,7 +62,10 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
             </a>
           </Box>
         ) : (
-          item
+          <Box key={item} backgroundColor="surface" padding="20px">
+            {title}
+            {item}
+          </Box>
         );
       }
       if (["ADDRESS"].includes(columns[index].name)) {
