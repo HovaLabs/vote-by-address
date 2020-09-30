@@ -25,10 +25,7 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
       return (
         <Box key={item} backgroundColor="surface" padding="20px">
           {title}
-          <S.EmptyValue>
-            <S.Line />
-            <Spacer width={20} />
-          </S.EmptyValue>
+          N/A
         </Box>
       );
     } else {
@@ -51,7 +48,11 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
           case "Voting Information Project":
             url = "https://www.votinginfoproject.org/";
             break;
+          case "DemocracyWorks":
+            url = "https://www.democracy.works/";
+            break;
           default:
+            url = "";
             break;
         }
         return url ? (
