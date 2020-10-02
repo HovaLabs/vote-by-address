@@ -92,7 +92,7 @@ const typography = {
     font-family: roboto;
     font-size: 34px;
     font-weight: 400;
-    line-height: 40px;
+    line-height: 50px;
     letter-spacing: 1.36px;
   `,
   heading5: css`

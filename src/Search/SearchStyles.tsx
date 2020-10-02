@@ -12,6 +12,7 @@ export const Input = styled.input(
   background: ${p.theme.colors.surface};
   box-sizing: border-box;
   border: none;
+  border-radius: 0;
   color: ${p.theme.colors.onSurface};
   width: 80%;
   max-width: 580px;
