@@ -27,9 +27,7 @@ export const EmptyValue = styled.div`
   height: 100%;
 `;
 
-export const DatePast = styled.span`
-  text-decoration: line-through;
-`;
+export const DatePast = styled.span``;
 
 export const DateToday = styled.span`
   background: ${(p) => p.theme.colors.primary};
