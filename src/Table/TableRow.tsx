@@ -139,7 +139,7 @@ const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
         );
       }
       if (["POLLING HOURS"].includes(columns[index].name)) {
-        const stringArray = item.split(/\r?\n/);
+        const stringArray = item.split(/\r?[\n;]/);
         const printOut = stringArray.map((day) => {
           const { isInFuture, isToday, isInPast } = getDateInfo(day);
           const dayPrintout = () => {
