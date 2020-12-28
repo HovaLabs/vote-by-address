@@ -141,8 +141,8 @@ export const useGetData = (
       try {
         const queryParams: Record<string, string> = {
           address: address,
-          electionId: "7000",
-          key: process.env.REACT_APP_GOOGLE_CIVIC_API_KEY ?? "",
+          electionId: "7000", // 2000 is test election
+          key: process.env.REACT_APP_GOOGLE_CIVIC_API_KEY ?? "", // https://console.developers.google.com/apis/credentials
         };
         const stringifiedQueryParams = new URLSearchParams(
           queryParams
