@@ -28,6 +28,7 @@ export const getDateInfo = (
   };
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const urlify = (text: string): any => {
   const urlRegex = /(https?:\/\/[^\s]+)/g;
   return text.replace(urlRegex, function (url) {
