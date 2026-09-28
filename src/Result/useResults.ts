@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
+import { fetchCurrentElectionId } from "../elections";
 
 type Address = {
   city: string;
@@ -64,7 +65,8 @@ type RequestData = {
   normalizedInput: Address;
   state: {
     name: string;
-    electionAdministrationBody: {
+    // Left out until Google has the state's election office details
+    electionAdministrationBody?: {
       name: string;
       electionInfoUrl: string;
       electionRegistrationUrl: string;
@@ -139,10 +141,16 @@ export const useGetData = (
       setError(undefined);
 
       try {
+        const electionId = await fetchCurrentElectionId();
+        if (electionId == null) {
+          // Nothing to look up until Google publishes the next election
+          history.push("/");
+          return;
+        }
         const queryParams: Record<string, string> = {
           address: address,
-          electionId: "7000",
-          key: process.env.REACT_APP_GOOGLE_CIVIC_API_KEY ?? "",
+          electionId,
+          key: process.env.REACT_APP_GOOGLE_CIVIC_API_KEY ?? "", // https://console.developers.google.com/apis/credentials
         };
         const stringifiedQueryParams = new URLSearchParams(
           queryParams
@@ -167,7 +175,7 @@ export const useGetData = (
             params.set("error", fetchData.error.message);
           }
           params.set("address", address);
-          history.push(`/?${params.toString()}`);
+          history.push(`/search?${params.toString()}`);
         }
 
         setData(fetchData);
@@ -329,23 +337,18 @@ export const getStateInfo = (data: RequestData): StateInfo => {
   ];
 
   const rowsStateInfo: string[][] = state.map((info) => {
-    const { electionAdministrationBody, sources: infoSources } = info;
-    const {
-      ballotInfoUrl,
-      correspondenceAddress,
-      electionInfoUrl,
-      votingLocationFinderUrl,
-    } = electionAdministrationBody;
+    const { electionAdministrationBody: body, sources: infoSources } = info;
     const sources = infoSources
       .map((source: { name: string; official: boolean }) => {
         return source.name;
       })
       .join(", ");
+    // Empty cells show as N/A
     return [
-      ballotInfoUrl,
-      electionInfoUrl,
-      votingLocationFinderUrl || "",
-      Object.values(correspondenceAddress || []).join(" "),
+      body?.ballotInfoUrl ?? "",
+      body?.electionInfoUrl ?? "",
+      body?.votingLocationFinderUrl ?? "",
+      Object.values(body?.correspondenceAddress ?? []).join(" "),
       sources,
     ];
   });

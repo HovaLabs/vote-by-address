@@ -17,7 +17,9 @@ export const CookieWarning: React.FC<{
 
   React.useEffect(() => {
     if (bannerAcknowledged && !handlerCalled) {
-      handleBannerAcknowledged?.();
+      if (handleBannerAcknowledged) {
+        handleBannerAcknowledged();
+      };
       setHandlerCalled(true);
     }
   }, [bannerAcknowledged, handleBannerAcknowledged, handlerCalled]);
