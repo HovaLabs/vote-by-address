@@ -6,6 +6,12 @@ export const ContainerInput = styled.div`
   padding-top: 32px;
 `;
 
+export const ContainerAutocomplete = styled.div`
+  position: relative;
+  width: 80%;
+  max-width: 580px;
+`;
+
 export const Input = styled.input(
   (p) => `
   ${p.theme.typography.paragraph0}
@@ -14,14 +20,55 @@ export const Input = styled.input(
   border: none;
   border-radius: 0;
   color: ${p.theme.colors.onSurface};
-  width: 80%;
-  max-width: 580px;
+  display: block;
+  width: 100%;
   padding: 14px;
   &:focus {
     outline: none;
   }
 `
 );
+
+export const Suggestions = styled.div(
+  (p) => `
+  background: ${p.theme.colors.surface};
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: ${p.theme.zIndices.bodyLift};
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+`
+);
+
+export const Suggestion = styled.li(
+  (p) => `
+  ${p.theme.typography.paragraph2}
+  color: ${p.theme.colors.onSurface};
+  cursor: pointer;
+  line-height: 22px;
+  padding: 12px 14px;
+  &[aria-selected="true"] {
+    background: ${p.theme.colors.background};
+    color: ${p.theme.colors.primary};
+  }
+`
+);
+
+// Google requires attributing Places suggestions shown without a map
+export const Attribution = styled.div`
+  color: #999;
+  font-family: roboto;
+  font-size: 12px;
+  padding: 4px 14px 8px;
+  text-align: right;
+`;
 
 export const ContainerOuter = styled.div`
   align-items: center;
