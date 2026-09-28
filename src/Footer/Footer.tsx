@@ -61,11 +61,7 @@ export const Footer: React.FC = () => {
         <Box display="flex" alignItems="flex-end">
           <Spacer height={{ mobile: "38px", tablet: 0 }} />
 
-          <a
-            href="https://forms.gle/nDFm7oMuTZhJGPe66"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="mailto:kaitlyn@hovalabs.com">
             <Text typography="paragraph1">Contact Us</Text>
           </a>
         </Box>
