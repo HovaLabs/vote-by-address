@@ -4,6 +4,11 @@ export type ColumnType = {
   name: string;
 };
 export type ColumnsType = ColumnType[];
+// A column that has data, and its position in each row
+export type VisibleColumn = {
+  column: ColumnType;
+  index: number;
+};
 
 // Rows
 export type RowType = string[];
@@ -16,5 +21,6 @@ export type TableType = {
   data: any;
   rows: RowsType;
   columns: ColumnsType;
-  title: string;
+  // Left out when something else labels the table, like a tab
+  title?: string;
 };

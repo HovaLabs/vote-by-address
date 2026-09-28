@@ -99,10 +99,11 @@ export const useStateInfo = (data: any | null): HookOutputStateInfo => {
   return { columnsStateInfo, rowsStateInfo };
 };
 
-export const formatDate = (date: string): string => {
-  const d = new Date(date.replace(/-/g, "/"));
-  const ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(d);
-  const mo = new Intl.DateTimeFormat("en", { month: "long" }).format(d);
-  const da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(d);
-  return `${mo} ${da}, ${ye}`;
-};
+// Matches the home page, e.g. "Tuesday, November 3, 2026"
+export const formatDate = (date: string): string =>
+  new Intl.DateTimeFormat("en", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  }).format(new Date(date.replace(/-/g, "/")));

@@ -53,8 +53,15 @@ const colors = {
   onPrimary: hues.shade0000,
   background: hues.blue0200,
   onBackground: hues.shade1100,
+  // Supporting text, like address lines
+  onBackgroundSecondary: hues.blue1000,
+  // Labels and missing values
+  onBackgroundMuted: hues.blue0800,
   surface: hues.blue0400,
+  // Rows and cards that sit just above the background
+  surfaceSubtle: hues.blue0300,
   onSurface: hues.shade1100,
+  divider: hues.blue0400,
   error: hues.yellow1000,
 };
 
@@ -199,6 +206,29 @@ const typography = {
     font-weight: 700;
     line-height: 20px;
     letter-spacing: 1.76px;
+  `,
+  // Tighter tracking for dense text like tables
+  body0: css`
+    font-family: roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.4px;
+  `,
+  bodyBold0: css`
+    font-family: roboto;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.4px;
+  `,
+  // Small all-caps labels, like table column names
+  caption0: css`
+    font-family: roboto;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 1.6px;
   `,
   label0: css`
     font-family: roboto;

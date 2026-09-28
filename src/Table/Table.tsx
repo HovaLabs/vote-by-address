@@ -1,58 +1,50 @@
 import React from "react";
 import * as S from "./TableStyles";
-import { Text, Grid } from "../design-system";
+import { Spacer, Text } from "../design-system";
 import TableRow from "./TableRow";
-import { TableType } from "./TableTypes";
+import { TableType, VisibleColumn } from "./TableTypes";
 
 const Table: React.FC<TableType> = ({ data, rows, columns, title }) => {
-  const columnsPrintout = columns.map((column, index) => {
-    const { name } = column;
-    return (
-      <Text
-        key={`${name}-${index}`}
-        as="h5"
-        padding="20px 20px 20px 0"
-        typography="paragraphBold1"
-      >
-        {name}
-      </Text>
+  // Hide columns Google has no data for in any row, rather than a column of N/As
+  const visibleColumns: VisibleColumn[] = columns
+    .map((column, index) => ({ column, index }))
+    .filter(({ index }) =>
+      rows.some((row) => row[index] !== undefined && row[index] !== "")
     );
-  });
-
-  const rowsPrintout = rows.map((row, index) => {
-    return (
-      <TableRow
-        key={`${row[index]}-${columns[index]}`}
-        data={data}
-        row={row}
-        columns={columns}
-      />
-    );
-  });
+  if (visibleColumns.length === 0) {
+    return null;
+  }
+  const gridColumns = visibleColumns
+    .map(({ column }) => `minmax(0, ${column.width})`)
+    .join(" ");
 
   return (
     <S.ContainerTable>
-      <Text as="h5" padding={"20px 20px 20px 0"} typography="heading5">
-        {title}
-      </Text>
-      <Grid
-        key={`${columns[0].name}-columns`}
-        display={{ mobile: "none", desktop: "grid" }}
-        gridTemplateColumns={columns.map((column) => column.width).join(" ")}
-        gridRowGap={{ mobile: 0, desktop: 20 }}
-      >
-        {columnsPrintout}
-      </Grid>
-      <Grid
-        key={`${columns[0].name}-rows`}
-        gridTemplateColumns={{
-          mobile: "1fr",
-          desktop: columns.map((column) => column.width).join(" "),
-        }}
-        gridRowGap={{ mobile: 0, desktop: "20px" }}
-      >
-        {rowsPrintout}
-      </Grid>
+      {title && (
+        <>
+          <Text
+            as="h2"
+            typography={{ mobile: "heading6", desktop: "heading5" }}
+          >
+            {title}
+          </Text>
+          <Spacer height="24px" />
+        </>
+      )}
+      <S.HeaderRow $columns={gridColumns}>
+        {visibleColumns.map(({ column }) => (
+          <S.ColumnLabel key={column.name}>{column.name}</S.ColumnLabel>
+        ))}
+      </S.HeaderRow>
+      {rows.map((row, rowIndex) => (
+        <TableRow
+          key={rowIndex}
+          data={data[rowIndex]}
+          row={row}
+          columns={visibleColumns}
+          gridColumns={gridColumns}
+        />
+      ))}
     </S.ContainerTable>
   );
 };

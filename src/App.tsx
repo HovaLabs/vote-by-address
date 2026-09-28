@@ -10,6 +10,7 @@ import { AnalyticsConsent } from "./AnalyticsConsent";
 import { PrivacyPolicy } from "./PrivacyPolicy";
 import { TermsOfUse } from "./TermsOfUse";
 import { Countdown } from "./Countdown";
+import { TEST_ELECTION_ADDRESS, TEST_ELECTION_ID } from "./elections";
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,13 @@ const App: React.FC = () => {
           <Switch>
             <Route path="/result/:address">
               <Result />
+            </Route>
+            {/* The results page filled with Google's sample data */}
+            <Route path="/sample">
+              <Result
+                address={TEST_ELECTION_ADDRESS}
+                electionId={TEST_ELECTION_ID}
+              />
             </Route>
             <Route path="/privacy-policy">
               <PrivacyPolicy />

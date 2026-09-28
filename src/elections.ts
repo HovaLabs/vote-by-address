@@ -1,7 +1,10 @@
 const GOOGLE_CIVIC_ELECTIONS_URL =
   "https://www.googleapis.com/civicinfo/v2/elections";
 const NATIONAL_DIVISION_ID = "ocd-division/country:us";
-const TEST_ELECTION_ID = "2000";
+export const TEST_ELECTION_ID = "2000";
+// Google returns sample polling, early vote, and drop off data for this address
+// in the test election
+export const TEST_ELECTION_ADDRESS = "340 Main St, Venice, CA 90291";
 
 export type Election = {
   name: string;

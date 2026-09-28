@@ -121,7 +121,9 @@ const GOOGLE_CIVIC_INFO_URL =
 
 // used to get the initial list of tables and handles all top level tables logic
 export const useGetData = (
-  address: string
+  address: string,
+  // Look up this election instead of the upcoming national one
+  electionIdOverride?: string
 ): DropOffLocations &
   PollingLocations &
   StateInfo &
@@ -141,7 +143,8 @@ export const useGetData = (
       setError(undefined);
 
       try {
-        const electionId = await fetchCurrentElectionId();
+        const electionId =
+          electionIdOverride ?? (await fetchCurrentElectionId());
         if (electionId == null) {
           // Nothing to look up until Google publishes the next election
           history.push("/");
@@ -188,7 +191,7 @@ export const useGetData = (
     };
 
     doTheThing();
-  }, [address, history]);
+  }, [address, electionIdOverride, history]);
 
   const { columnsDropOffLocations, rowsDropOffLocations } = getDropOffLocations(
     data
@@ -224,12 +227,12 @@ export const getDropOffLocations = (data: RequestData): DropOffLocations => {
   const { dropOffLocations } = data;
 
   const columnsDropOffLocations: { width: string; name: string }[] = [
-    { width: "2fr", name: "ADDRESS" },
-    { width: "2fr", name: "START DATE" },
-    { width: "2fr", name: "END DATE" },
+    { width: "3fr", name: "ADDRESS" },
+    { width: "1.5fr", name: "START DATE" },
+    { width: "1.5fr", name: "END DATE" },
     { width: "2fr", name: "POLLING HOURS" },
-    { width: "2fr", name: "NOTES" },
-    { width: "2fr", name: "SOURCES" },
+    { width: "2.5fr", name: "NOTES" },
+    { width: "1.5fr", name: "SOURCES" },
   ];
 
   const rowsDropOffLocations: string[][] = dropOffLocations.map((location) => {
@@ -259,12 +262,12 @@ export const getEarlyVoteSites = (data: RequestData): EarlyVoteSites => {
   const { earlyVoteSites } = data;
 
   const columnsEarlyVoteSites: { width: string; name: string }[] = [
-    { width: "2fr", name: "ADDRESS" },
-    { width: "2fr", name: "START DATE" },
-    { width: "2fr", name: "END DATE" },
+    { width: "3fr", name: "ADDRESS" },
+    { width: "1.5fr", name: "START DATE" },
+    { width: "1.5fr", name: "END DATE" },
     { width: "2fr", name: "POLLING HOURS" },
-    { width: "2fr", name: "NOTES" },
-    { width: "2fr", name: "SOURCES" },
+    { width: "2.5fr", name: "NOTES" },
+    { width: "1.5fr", name: "SOURCES" },
   ];
 
   const rowsEarlyVoteSites: string[][] = earlyVoteSites.map((location) => {
@@ -294,12 +297,12 @@ export const getPollingLocations = (data: RequestData): PollingLocations => {
   const { pollingLocations } = data;
 
   const columnsPollingLocations: { width: string; name: string }[] = [
-    { width: "2fr", name: "ADDRESS" },
-    { width: "2fr", name: "START DATE" },
-    { width: "2fr", name: "END DATE" },
+    { width: "3fr", name: "ADDRESS" },
+    { width: "1.5fr", name: "START DATE" },
+    { width: "1.5fr", name: "END DATE" },
     { width: "2fr", name: "POLLING HOURS" },
-    { width: "2fr", name: "NOTES" },
-    { width: "2fr", name: "SOURCES" },
+    { width: "2.5fr", name: "NOTES" },
+    { width: "1.5fr", name: "SOURCES" },
   ];
 
   const rowsPollingLocations: string[][] = pollingLocations.map((location) => {
@@ -310,8 +313,8 @@ export const getPollingLocations = (data: RequestData): PollingLocations => {
       .join(", ");
     return [
       Object.values(location.address).join(" "),
-      location.startDate,
-      location.endDate,
+      formatDate(location.startDate),
+      formatDate(location.endDate),
       location.pollingHours,
       location.notes,
       sources,
@@ -363,6 +366,6 @@ export const formatDate = (date: string | undefined): string => {
   const d = new Date(date.replace(/-/g, "/"));
   const ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(d);
   const mo = new Intl.DateTimeFormat("en", { month: "long" }).format(d);
-  const da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(d);
+  const da = new Intl.DateTimeFormat("en", { day: "numeric" }).format(d);
   return `${mo} ${da}, ${ye}`;
 };
