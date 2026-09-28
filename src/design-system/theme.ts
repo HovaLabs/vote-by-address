@@ -7,7 +7,7 @@ export const {
   default: styled,
   ThemeProvider,
   ThemeContext,
-} = baseStyled as baseStyled.ThemedStyledComponentsModule<Theme>;
+} = (baseStyled as unknown) as baseStyled.ThemedStyledComponentsModule<Theme>;
 
 const hues = {
   shade1100: "#ffffff",

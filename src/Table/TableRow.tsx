@@ -4,6 +4,7 @@ import { Box, Spacer, Text } from "../design-system";
 import { ColumnsType, RowType } from "./TableTypes";
 import { getDateInfo, getIsLink, urlify } from "./TableUtils";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const TableRow: React.FC<{ data: any; row: RowType; columns: ColumnsType }> = ({
   data,
   row,

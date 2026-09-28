@@ -19,6 +19,7 @@ type HookOutputPollingLocations = {
 };
 
 export const usePollingLocations = (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any | null
 ): HookOutputPollingLocations => {
   // Bail if no data
@@ -35,6 +36,7 @@ export const usePollingLocations = (
   ];
 
   const rowsPollingLocations: string[][] = pollingLocations.map(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (location: any) => {
       const sources = location.sources
         .map((source: { name: string; official: boolean }) => {
@@ -57,6 +59,7 @@ type HookOutputStateInfo = {
   rowsStateInfo: string[][];
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const useStateInfo = (data: any | null): HookOutputStateInfo => {
   // Bail if no data
   if (data === null || data.state === undefined) {
@@ -70,6 +73,7 @@ export const useStateInfo = (data: any | null): HookOutputStateInfo => {
     { width: "1fr", name: "CORRESPONDENCE ADDRESS" },
     { width: "1fr", name: "SOURCES" },
   ];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const rowsStateInfo: string[][] = state.map((info: any) => {
     const { electionAdministrationBody, sources: infoSources } = info;
     const {
