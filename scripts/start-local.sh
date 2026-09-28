@@ -12,11 +12,4 @@ else
   npx --yes yarn@1 install
 fi
 
-# react-scripts 3 uses webpack 4, which needs the legacy OpenSSL provider on Node 17+
-NODE_MAJOR=`node -p "process.versions.node.split('.')[0]"`
-
-if [[ "$NODE_MAJOR" -ge 17 ]]; then
-  export NODE_OPTIONS="--openssl-legacy-provider $NODE_OPTIONS"
-fi
-
 exec npm start

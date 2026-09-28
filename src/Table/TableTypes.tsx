@@ -12,6 +12,7 @@ export type RowsType = RowType[];
 // Table
 
 export type TableType = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
   rows: RowsType;
   columns: ColumnsType;
