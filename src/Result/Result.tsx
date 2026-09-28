@@ -61,7 +61,7 @@ const Result: React.FC = () => {
       alignItems="flex-start"
       height="100%"
     >
-      <Link to="/">
+      <Link to="/search">
         <S.BackLink>
           <img alt="arrow" src={arrow} />
           <Text as="p" typography="paragraph0">

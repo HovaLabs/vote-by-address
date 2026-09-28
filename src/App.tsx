@@ -9,6 +9,7 @@ import { AnalyticsProvider } from "./Analytics";
 import { AnalyticsConsent } from "./AnalyticsConsent";
 import { PrivacyPolicy } from "./PrivacyPolicy";
 import { TermsOfUse } from "./TermsOfUse";
+import { Countdown } from "./Countdown";
 
 const App: React.FC = () => {
   return (
@@ -25,8 +26,11 @@ const App: React.FC = () => {
             <Route path="/terms-of-use">
               <TermsOfUse />
             </Route>
-            <Route path="/">
+            <Route path="/search">
               <Search />
+            </Route>
+            <Route path="/">
+              <Countdown />
             </Route>
           </Switch>
         </S.ContainerOuter>
